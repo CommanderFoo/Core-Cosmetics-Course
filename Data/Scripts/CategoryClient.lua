@@ -55,6 +55,8 @@ local function LoadCategoryCosmetics(cosmetics, categoryIndex)
 			yOffset = yOffset + 65
 			xOffset = 0
 		end
+
+		counter = counter + 1
 	end
 end
 
@@ -82,7 +84,7 @@ local function OnButtonPressed(button, indicator, category, categoryIndex)
 end
 
 local function CreateCategories()
-	local offset = 50
+	local offset = 0
 
 	for index, category in ipairs(COSMETIC_CATEGORIES) do
 		local item = World.SpawnAsset(CATEGORY_ENTRY)

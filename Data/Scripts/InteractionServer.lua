@@ -9,7 +9,7 @@ end
 local function DisablePlayer(player)
 	OVERRIDE_PLAYER_SETTINGS:ApplyToPlayer(player)
 	player:SetWorldRotation(PLAYER_POSITION:GetWorldRotation())
-	player:SetWorldPosition(Vector3.New(PLAYER_POSITION:GetWorldPosition().x, PLAYER_POSITION:GetWorldPosition().y, 132.77033996582))
+	player:SetWorldPosition(Vector3.New(PLAYER_POSITION:GetWorldPosition().x, PLAYER_POSITION:GetWorldPosition().y, 132))
 	
 end
 

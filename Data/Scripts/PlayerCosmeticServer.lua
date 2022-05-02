@@ -30,15 +30,26 @@ end
 
 local function ClearCosmetic(player, categoryIndex, cosmeticIndex)
 	local cosmetics = playerCosmetics[player][categoryIndex]
-
-	if cosmetics[cosmeticIndex] ~= nil then
+	
+	if cosmetics ~= nil then
 		local attachedObjects = player:GetAttachedObjects()
 		local category = COSMETIC_CATEGORIES[categoryIndex]
-		local cosmetic = category[cosmeticIndex]
+		local cosmetic = category.cosmetics[cosmeticIndex]
 
 		for index, object in ipairs(attachedObjects) do
 			if object:GetAttachedToSocketName() == category.socket then
-				print(cosmetic.template, object.id)
+				local muid, name = CoreString.Split(cosmetic.template, ":")
+
+				if muid == object.sourceTemplateId then
+					for ci, c in ipairs(cosmetics) do
+						if(c == cosmeticIndex) then
+							table.remove(cosmetics, ci)
+							break
+						end
+					end
+
+					object:Destroy()
+				end
 			end
 		end
 	end
@@ -54,11 +65,13 @@ local function ApplyCosmetic(player, categoryIndex, cosmeticIndex)
 			local row = cosmetics[cosmeticIndex]
 
 			if row ~= nil then
-				if not row.stackable then
-					ClearCosmeticCategory(player, categoryIndex)
-				elseif CosmeticIsAttached(player, categoryIndex, cosmeticIndex) then
+				if CosmeticIsAttached(player, categoryIndex, cosmeticIndex) then
 					ClearCosmetic(player, categoryIndex, cosmeticIndex)
 					return
+				end
+
+				if not row.stackable then
+					ClearCosmeticCategory(player, categoryIndex)
 				end
 
 				local cosmetic = World.SpawnAsset(row.template, { networkContext = NetworkContextType.NETWORKED })
@@ -85,7 +98,7 @@ local function OnPlayerLeft(player)
 end
 
 Events.ConnectForPlayer("cosmetic.apply", ApplyCosmetic)
-Events.ConnectForPlayer("cosmetic.clear", ClearCosmetic)
+Events.ConnectForPlayer("cosmetic.clear", ClearCosmeticCategory)
 
 Game.playerJoinedEvent:Connect(OnPlayerJoined)
 Game.playerLeftEvent:Connect(OnPlayerLeft)
