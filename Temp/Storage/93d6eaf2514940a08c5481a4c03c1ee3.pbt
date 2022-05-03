@@ -9,16 +9,7 @@ Entries {
           IntVar: 1
         }
         SimpleValue {
-          Table {
-            Entries {
-              Key {
-                IntVar: 1
-              }
-              SimpleValue {
-                IntVar: 2
-              }
-            }
-          }
+          IntVar: 0
         }
       }
       Entries {
@@ -26,8 +17,7 @@ Entries {
           IntVar: 2
         }
         SimpleValue {
-          Table {
-          }
+          IntVar: 0
         }
       }
       Entries {
@@ -35,8 +25,7 @@ Entries {
           IntVar: 3
         }
         SimpleValue {
-          Table {
-          }
+          IntVar: 0
         }
       }
       Entries {
@@ -44,8 +33,7 @@ Entries {
           IntVar: 4
         }
         SimpleValue {
-          Table {
-          }
+          IntVar: 0
         }
       }
       Entries {
@@ -53,8 +41,7 @@ Entries {
           IntVar: 5
         }
         SimpleValue {
-          Table {
-          }
+          IntVar: 0
         }
       }
       Entries {
@@ -62,8 +49,7 @@ Entries {
           IntVar: 6
         }
         SimpleValue {
-          Table {
-          }
+          IntVar: 0
         }
       }
       Entries {
@@ -71,8 +57,7 @@ Entries {
           IntVar: 7
         }
         SimpleValue {
-          Table {
-          }
+          IntVar: 0
         }
       }
       Entries {
@@ -80,8 +65,7 @@ Entries {
           IntVar: 8
         }
         SimpleValue {
-          Table {
-          }
+          IntVar: 0
         }
       }
       Entries {
@@ -89,8 +73,7 @@ Entries {
           IntVar: 9
         }
         SimpleValue {
-          Table {
-          }
+          IntVar: 0
         }
       }
       Entries {
@@ -98,8 +81,7 @@ Entries {
           IntVar: 10
         }
         SimpleValue {
-          Table {
-          }
+          IntVar: 0
         }
       }
       Entries {
@@ -107,8 +89,7 @@ Entries {
           IntVar: 11
         }
         SimpleValue {
-          Table {
-          }
+          IntVar: 0
         }
       }
     }

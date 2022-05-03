@@ -12,11 +12,19 @@ local activeButton = nil
 local activeIndicator = nil
 local activeCategoryIndex = 1
 local cosmeticPlayerData = {}
-local activeButtons = {}
+local activeCosmetics = {}
 local categoriesCreated = false
 local totalItemsPerRow = math.floor(COSMETIC_PANEL.parent.width / 65)
 
 local function OnClearClicked()
+	if activeCosmetics[activeCategoryIndex] ~= nil and activeCosmetics[activeCategoryIndex] ~= 0 then
+		local activeButton = COSMETIC_PANEL:FindChildByName(string.format("Category: %s Item: %s", activeCategoryIndex, activeCosmetics[activeCategoryIndex]))
+
+		if(Object.IsValid(activeButton)) then
+			activeButton:SetButtonColor(activeButton:GetDisabledColor())
+		end
+	end
+
 	Events.BroadcastToServer("cosmetic.clear", activeCategoryIndex)
 end
 
@@ -28,48 +36,40 @@ local function ClearCosmeticPanel()
 	end
 end
 
-local function ClearActiveButton(button, categoryIndex, cosmeticIndex, stackable)
+local function ClearActiveButton(categoryIndex, cosmeticIndex)
 	local alreadyActive = false
 
-	if activeButtons[categoryIndex] ~= nil then
-		for index, item in ipairs(activeButtons[categoryIndex]) do
-			local activeButton = COSMETIC_PANEL:FindChildByName(string.format("Category: %s Item: %s", categoryIndex, item.cosmeticIndex))
+	if activeCosmetics[categoryIndex] ~= nil and activeCosmetics[categoryIndex] ~= 0 then
+		local activeButton = COSMETIC_PANEL:FindChildByName(string.format("Category: %s Item: %s", categoryIndex, activeCosmetics[categoryIndex]))
 
-			if not stackable or cosmeticIndex == item.cosmeticIndex then
-				activeButton:SetButtonColor(activeButton:GetDisabledColor())
-				table.remove(activeButtons[categoryIndex], index)
-				
-				if cosmeticIndex == item.cosmeticIndex then
-					alreadyActive = true
-				end
-			end
+		if(Object.IsValid(activeButton)) then
+			activeButton:SetButtonColor(activeButton:GetDisabledColor())
 		end
+		
+		if cosmeticIndex == activeCosmetics[categoryIndex] then
+			alreadyActive = true
+		end
+
+		activeCosmetics[categoryIndex] = 0
 	end
 
 	return alreadyActive
 end
 
-local function AddActiveButton(button, categoryIndex, cosmeticIndex, stackable)
-	if activeButtons[categoryIndex] == nil then
-		activeButtons[categoryIndex] = {}
+local function AddActiveButton(button, categoryIndex, cosmeticIndex)
+	if activeCosmetics[categoryIndex] == nil then
+		activeCosmetics[categoryIndex] = 0
 	end
 
-	table.insert(activeButtons[categoryIndex], {
-
-
-		cosmeticIndex = cosmeticIndex,
-		stackable = stackable
-
-	})
-
+	activeCosmetics[categoryIndex] = cosmeticIndex
 	button:SetButtonColor(button:GetPressedColor())
 end
 
-local function OnCosmeticClicked(button, categoryIndex, cosmeticIndex, stackable)
-	local alreadyActive = ClearActiveButton(button, categoryIndex, cosmeticIndex, stackable)
+local function OnCosmeticClicked(button, categoryIndex, cosmeticIndex)
+	local alreadyActive = ClearActiveButton(categoryIndex, cosmeticIndex)
 
 	if not alreadyActive then
-		AddActiveButton(button, categoryIndex, cosmeticIndex, stackable)
+		AddActiveButton(button, categoryIndex, cosmeticIndex)
 	end
 
 	Events.BroadcastToServer("cosmetic.apply", categoryIndex, cosmeticIndex)
@@ -96,15 +96,10 @@ local function LoadCategoryCosmetics(cosmetics, categoryIndex)
 			xOffset = xOffset + 65
 
 			item.name = string.format("Category: %s Item: %s", categoryIndex, index)
-			item.clickedEvent:Connect(OnCosmeticClicked, categoryIndex, index, row.stackable)
+			item.clickedEvent:Connect(OnCosmeticClicked, categoryIndex, index)
 
-			if activeButtons[categoryIndex] ~= nil then
-				for _, activeItem in ipairs(activeButtons[categoryIndex]) do
-					if(activeItem.cosmeticIndex == index) then
-						item:SetButtonColor(item:GetPressedColor())
-						break
-					end
-				end
+			if activeCosmetics[categoryIndex] ~= nil and activeCosmetics[categoryIndex] == index then
+				item:SetButtonColor(item:GetPressedColor())
 			end
 
 			if counter == totalItemsPerRow then
@@ -165,22 +160,10 @@ local function CreateCategories()
 	end
 end
 
-local function CreateActiveButtonsTable()
+local function CreateactiveCosmeticsTable()
 	if cosmeticPlayerData ~= nil then
-		for categoryIndex, cosmetics in ipairs(cosmeticPlayerData) do
-			if activeButtons[categoryIndex] == nil then
-				activeButtons[categoryIndex] = {}
-			end
-
-			for index, cosmeticIndex in ipairs(cosmetics) do
-				table.insert(activeButtons[categoryIndex], {
-
-
-					cosmeticIndex = cosmeticIndex,
-					stackable = COSMETIC_CATEGORIES[categoryIndex].cosmetics[cosmeticIndex].stackable
-			
-				})
-			end
+		for categoryIndex, cosmetic in ipairs(cosmeticPlayerData) do
+			activeCosmetics[categoryIndex] = cosmetic
 		end
 	end
 end
@@ -191,7 +174,7 @@ local function OnPrivateDataChanged(player, key)
 
 		if data ~= nil then
 			cosmeticPlayerData = data
-			CreateActiveButtonsTable()
+			CreateactiveCosmeticsTable()
 		end
 	end
 end

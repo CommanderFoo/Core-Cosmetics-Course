@@ -14,18 +14,12 @@ local function ClearCosmeticCategory(player, categoryIndex)
 			end
 		end
 
-		playerCosmetics[player][categoryIndex] = {}
+		playerCosmetics[player][categoryIndex] = 0
 	end
 end
 
 local function CosmeticIsAttached(player, categoryIndex, cosmeticIndex)
-	for index, cosmetic in ipairs(playerCosmetics[player][categoryIndex]) do
-		if cosmetic == cosmeticIndex then
-			return true
-		end
-	end
-
-	return false
+	return playerCosmetics[player][categoryIndex] == cosmeticIndex
 end
 
 local function ClearCosmetic(player, categoryIndex, cosmeticIndex)
@@ -41,17 +35,12 @@ local function ClearCosmetic(player, categoryIndex, cosmeticIndex)
 				local muid, name = CoreString.Split(cosmetic.template, ":")
 
 				if muid == object.sourceTemplateId then
-					for ci, c in ipairs(cosmetics) do
-						if(c == cosmeticIndex) then
-							table.remove(cosmetics, ci)
-							break
-						end
-					end
-
 					object:Destroy()
 				end
 			end
 		end
+
+		playerCosmetics[player][categoryIndex] = 0
 	end
 end
 
@@ -70,15 +59,13 @@ local function ApplyCosmetic(player, categoryIndex, cosmeticIndex)
 					return
 				end
 
-				if not row.stackable then
-					ClearCosmeticCategory(player, categoryIndex)
-				end
-
+				ClearCosmeticCategory(player, categoryIndex)
+				
 				local cosmetic = World.SpawnAsset(row.template, { networkContext = NetworkContextType.NETWORKED })
 
 				cosmetic.name = "Cosmetic Item - [Cat: " .. tostring(categoryIndex) .. ", Item: " .. tostring(cosmeticIndex) .. "]"
 				cosmetic:AttachToPlayer(player, category.socket)
-				table.insert(playerCosmetics[player][categoryIndex], cosmeticIndex)
+				playerCosmetics[player][categoryIndex] = cosmeticIndex
 			end
 		end
 	end
@@ -89,23 +76,25 @@ local function CategoryIsEnabled(categoryIndex)
 end
 
 local function CosmeticIsEnabled(categoryIndex, cosmeticIndex)
+	if cosmeticIndex == 0 then
+		return
+	end
+
 	return COSMETIC_CATEGORIES[categoryIndex].cosmetics[cosmeticIndex].enabled
 end
 
 local function EquipPlayerCosmetics(player)
 	for categoryIndex, category in ipairs(COSMETIC_CATEGORIES) do
-		local playerCosmetics = playerCosmetics[player][categoryIndex]
+		local playerCosmetic = playerCosmetics[player][categoryIndex]
 
-		if playerCosmetics ~= nil then
-			for index, cosmeticIndex in ipairs(playerCosmetics) do
-				local cosmetic = category.cosmetics[cosmeticIndex]
+		if playerCosmetic ~= 0 then
+			local cosmetic = category.cosmetics[playerCosmetic]
 
-				if cosmetic ~= nil then
-					local cosmetic = World.SpawnAsset(cosmetic.template, { networkContext = NetworkContextType.NETWORKED })
+			if cosmetic ~= nil then
+				local cosmetic = World.SpawnAsset(cosmetic.template, { networkContext = NetworkContextType.NETWORKED })
 
-					cosmetic.name = "Cosmetic Item - [Cat: " .. tostring(categoryIndex) .. ", Item: " .. tostring(cosmeticIndex) .. "]"
-					cosmetic:AttachToPlayer(player, category.socket)
-				end
+				cosmetic.name = "Cosmetic Item - [Cat: " .. tostring(categoryIndex) .. ", Item: " .. tostring(playerCosmetic) .. "]"
+				cosmetic:AttachToPlayer(player, category.socket)
 			end
 		end
 	end
@@ -115,19 +104,15 @@ local function OnPlayerJoined(player)
 	playerCosmetics[player] = {}
 
 	for index, row in ipairs(COSMETIC_CATEGORIES) do
-		playerCosmetics[player][index] = {}
+		playerCosmetics[player][index] = 0
 	end
 
 	local data = Storage.GetPlayerData(player)
 
 	if data.cosmetics ~= nil then
-		for cateogryIndex, cosmetics in ipairs(data.cosmetics) do
-			if CategoryIsEnabled(cateogryIndex) then
-				for index, cosmeticIndex in ipairs(cosmetics) do
-					if CosmeticIsEnabled(cateogryIndex, cosmeticIndex) then
-						table.insert(playerCosmetics[player][cateogryIndex], cosmeticIndex)
-					end
-				end
+		for cateogryIndex, cosmetic in ipairs(data.cosmetics) do
+			if CategoryIsEnabled(cateogryIndex) and CosmeticIsEnabled(cateogryIndex, cosmetic) then
+				playerCosmetics[player][cateogryIndex] = cosmetic
 			end
 		end
 
