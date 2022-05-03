@@ -18,6 +18,7 @@ Objects {
   ChildIds: 18273135735424674543
   ChildIds: 14445492815313781689
   ChildIds: 679892742447053561
+  ChildIds: 7540961426672084779
   UnregisteredParameters {
   }
   Collidable_v2 {
@@ -33,6 +34,45 @@ Objects {
   }
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"
+  }
+}
+Objects {
+  Id: 7540961426672084779
+  Name: "Item Button"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 4781671109827199097
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 7348381021289254140
+      value {
+        Overrides {
+          Name: "Name"
+          String: "Item Button"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+            X: -288.222076
+            Y: -148.124008
+            Z: 2.28881836e-05
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 10404635513327958627
+    }
   }
 }
 Objects {
@@ -364,6 +404,16 @@ Objects {
       ObjectReference {
         SelfId: 1295520017669104817
       }
+    }
+    Overrides {
+      Name: "cs:UIPanel"
+      ObjectReference {
+        SelfId: 6871725160970785464
+      }
+    }
+    Overrides {
+      Name: "cs:Event"
+      String: "CosmeticUIToggle"
     }
   }
   Collidable_v2 {
@@ -724,7 +774,7 @@ Objects {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
   Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
+    Value: "mc:evisibilitysetting:forceoff"
   }
   CameraCollidable {
     Value: "mc:ecollisionsetting:inheritfromparent"
