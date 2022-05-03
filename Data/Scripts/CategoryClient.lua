@@ -16,17 +16,17 @@ local activeCosmetics = {}
 local categoriesCreated = false
 local totalItemsPerRow = math.floor(COSMETIC_PANEL.parent.width / 65)
 
-local function OnClearClicked()
-	if activeCosmetics[activeCategoryIndex] ~= nil and activeCosmetics[activeCategoryIndex] ~= 0 then
-		local activeButton = COSMETIC_PANEL:FindChildByName(string.format("Category: %s Item: %s", activeCategoryIndex, activeCosmetics[activeCategoryIndex]))
+-- local function OnClearClicked()
+-- 	if activeCosmetics[activeCategoryIndex] ~= nil and activeCosmetics[activeCategoryIndex] ~= 0 then
+-- 		local activeButton = COSMETIC_PANEL:FindChildByName(string.format("Category: %s Item: %s", activeCategoryIndex, activeCosmetics[activeCategoryIndex]))
 
-		if(Object.IsValid(activeButton)) then
-			activeButton:SetButtonColor(activeButton:GetDisabledColor())
-		end
-	end
+-- 		if(Object.IsValid(activeButton)) then
+-- 			activeButton:SetButtonColor(activeButton:GetDisabledColor())
+-- 		end
+-- 	end
 
-	Events.BroadcastToServer("cosmetic.clear", activeCategoryIndex)
-end
+-- 	Events.BroadcastToServer("cosmetic.clear", activeCategoryIndex)
+-- end
 
 local function ClearCosmeticPanel()
 	for index, child in ipairs(COSMETIC_PANEL:GetChildren()) do
@@ -65,17 +65,18 @@ local function AddActiveButton(button, categoryIndex, cosmeticIndex)
 	button:SetButtonColor(button:GetPressedColor())
 end
 
-local function OnCosmeticClicked(button, categoryIndex, cosmeticIndex)
+local function OnCosmeticClicked(button, categoryIndex, cosmeticIndex, row)
 	local alreadyActive = ClearActiveButton(categoryIndex, cosmeticIndex)
 
 	if not alreadyActive then
 		AddActiveButton(button, categoryIndex, cosmeticIndex)
+		--LoadCosmeticColorPalette(row.p)
 	end
 
 	Events.BroadcastToServer("cosmetic.apply", categoryIndex, cosmeticIndex)
 end
 
-local function LoadCategoryCosmetics(cosmetics, categoryIndex)
+local function LoadCategory(cosmetics, categoryIndex)
 	ClearCosmeticPanel()
 
 	if cosmetics == nil then
@@ -84,7 +85,9 @@ local function LoadCategoryCosmetics(cosmetics, categoryIndex)
 
 	local xOffset = 65
 	local yOffset = 0
-	local counter = 1
+	local counter = 2
+	local rows = 0
+	local totalCreated = 0
 
 	for index, row in ipairs(cosmetics) do
 		if row.enabled then
@@ -96,7 +99,7 @@ local function LoadCategoryCosmetics(cosmetics, categoryIndex)
 			xOffset = xOffset + 65
 
 			item.name = string.format("Category: %s Item: %s", categoryIndex, index)
-			item.clickedEvent:Connect(OnCosmeticClicked, categoryIndex, index)
+			item.clickedEvent:Connect(OnCosmeticClicked, categoryIndex, index, row)
 
 			if activeCosmetics[categoryIndex] ~= nil and activeCosmetics[categoryIndex] == index then
 				item:SetButtonColor(item:GetPressedColor())
@@ -106,17 +109,21 @@ local function LoadCategoryCosmetics(cosmetics, categoryIndex)
 				counter = 0
 				yOffset = yOffset + 65
 				xOffset = 0
+				rows = rows + 1
 			end
 
 			counter = counter + 1
+			totalCreated = totalCreated + 1
 		end
 	end
+
+	COSMETIC_PANEL.height = (rows == 0 and 1 or rows) * 65
 end
 
 local function ShowCategory(category, categoryIndex)
 	activeCategoryIndex = categoryIndex
 	HEADER_TEXT.text = string.upper(category.name .. " Style")
-	LoadCategoryCosmetics(category.cosmetics, categoryIndex)
+	LoadCategory(category.cosmetics, categoryIndex)
 end
 
 local function OnButtonPressed(button, indicator, category, categoryIndex)
@@ -187,7 +194,6 @@ end
 
 OnPrivateDataChanged(LOCAL_PLAYER, "cosmetics")
 
-CLEAR_BUTTON.clickedEvent:Connect(OnClearClicked)
 LOCAL_PLAYER.privateNetworkedDataChangedEvent:Connect(OnPrivateDataChanged)
 
 Events.Connect("CosmeticUIToggle", OnUIToggled)

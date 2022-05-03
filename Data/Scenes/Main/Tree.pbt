@@ -18,7 +18,6 @@ Objects {
   ChildIds: 18273135735424674543
   ChildIds: 14445492815313781689
   ChildIds: 679892742447053561
-  ChildIds: 7540961426672084779
   UnregisteredParameters {
   }
   Collidable_v2 {
@@ -34,45 +33,6 @@ Objects {
   }
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"
-  }
-}
-Objects {
-  Id: 7540961426672084779
-  Name: "Item Button"
-  Transform {
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 4781671109827199097
-  TemplateInstance {
-    ParameterOverrideMap {
-      key: 7348381021289254140
-      value {
-        Overrides {
-          Name: "Name"
-          String: "Item Button"
-        }
-        Overrides {
-          Name: "Position"
-          Vector {
-            X: -288.222076
-            Y: -148.124008
-            Z: 2.28881836e-05
-          }
-        }
-        Overrides {
-          Name: "Rotation"
-          Rotator {
-          }
-        }
-      }
-    }
-    TemplateAsset {
-      Id: 10404635513327958627
-    }
   }
 }
 Objects {
@@ -783,7 +743,7 @@ Objects {
     Value: "mc:eindicatorvisibility:visiblewhenselected"
   }
   Control {
-    Width: 750
+    Width: 800
     Height: 850
     UIX: -150
     RenderTransformPivot {
@@ -838,7 +798,7 @@ Objects {
     Value: "mc:eindicatorvisibility:visiblewhenselected"
   }
   Control {
-    Width: 450
+    Width: 520
     Height: 100
     UIX: 300
     RenderTransformPivot {
@@ -894,7 +854,7 @@ Objects {
   }
   Control {
     Width: 100
-    Height: 100
+    Height: 65
     UIY: 50
     RenderTransformPivot {
       Anchor {
@@ -944,6 +904,12 @@ Objects {
             X: 1
             Y: 1
             Z: 1
+          }
+        }
+        Overrides {
+          Name: "Visible"
+          Enum {
+            Value: "mc:evisibilitysetting:inheritfromparent"
           }
         }
       }
@@ -1377,6 +1343,7 @@ Objects {
   ParentId: 13786696306280209619
   ChildIds: 8843286543164641671
   ChildIds: 957351107598403999
+  ChildIds: 8670428864554188555
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
@@ -1390,7 +1357,7 @@ Objects {
     Value: "mc:eindicatorvisibility:visiblewhenselected"
   }
   Control {
-    Width: 60
+    Width: 220
     Height: 60
     UIY: 100
     RenderTransformPivot {
@@ -1400,6 +1367,113 @@ Objects {
     }
     Panel {
       Opacity: 1
+    }
+    AnchorLayout {
+      SelfAnchor {
+        Anchor {
+          Value: "mc:euianchor:middlecenter"
+        }
+      }
+      TargetAnchor {
+        Anchor {
+          Value: "mc:euianchor:middlecenter"
+        }
+      }
+    }
+  }
+}
+Objects {
+  Id: 8670428864554188555
+  Name: "Mobile Button"
+  Transform {
+    Location {
+      X: -190.493484
+      Y: -76.9804382
+      Z: -2.28881836e-05
+    }
+    Rotation {
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 1295520017669104817
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  CameraCollidable {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  EditorIndicatorVisibility {
+    Value: "mc:eindicatorvisibility:visiblewhenselected"
+  }
+  Control {
+    Width: 40
+    UIX: 16
+    RenderTransformPivot {
+      Anchor {
+        Value: "mc:euianchor:middlecenter"
+      }
+    }
+    AddSizeToParentIfUsingParentSize: true
+    UseParentWidth: true
+    UseParentHeight: true
+    IsHittable: true
+    Button {
+      FontColor {
+        A: 1
+      }
+      FontSize: 20
+      ButtonColor {
+        R: 1
+        G: 1
+        B: 1
+      }
+      HoveredColor {
+        R: 1
+        G: 1
+        B: 1
+        A: 1
+      }
+      PressedColor {
+        R: 1
+        G: 1
+        B: 1
+        A: 1
+      }
+      DisabledColor {
+        R: 1
+        G: 1
+        B: 1
+        A: 1
+      }
+      Brush {
+        Id: 841534158063459245
+      }
+      IsButtonEnabled: true
+      OnlyUseMainColor: true
+      ClickMode {
+        Value: "mc:ebuttonclickmode:default"
+      }
+      Font {
+      }
+      Justification {
+        Value: "mc:etextjustify:center"
+      }
+      VerticalJustification {
+        Value: "mc:everticaljustification:center"
+      }
+      ShadowColor {
+        A: 1
+      }
+      ShadowOffset {
+      }
+      BoundAction: "Open / Close Appearance Modifier"
     }
     AnchorLayout {
       SelfAnchor {
@@ -1451,7 +1525,6 @@ Objects {
         Value: "mc:euianchor:middlecenter"
       }
     }
-    UseParentWidth: true
     UseParentHeight: true
     Image {
       Brush {
@@ -1739,7 +1812,7 @@ Objects {
     Value: "mc:eindicatorvisibility:visiblewhenselected"
   }
   Control {
-    Width: 220
+    Width: 200
     Height: 40
     UIX: 30
     RenderTransformPivot {
@@ -1747,6 +1820,7 @@ Objects {
         Value: "mc:euianchor:middlecenter"
       }
     }
+    UseParentWidth: true
     Image {
       Brush {
         Id: 841534158063459245
@@ -1779,7 +1853,7 @@ Objects {
 }
 Objects {
   Id: 13483939985566611507
-  Name: "UI Text Box"
+  Name: "Label"
   Transform {
     Location {
     }
