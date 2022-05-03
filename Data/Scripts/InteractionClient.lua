@@ -1,5 +1,7 @@
 local INTERACTION_TRIGGER = script:GetCustomProperty("InteractionTrigger"):WaitForObject()
 local INTERACTION_LABEL = script:GetCustomProperty("InteractionLabel"):WaitForObject()
+local UIPANEL = script:GetCustomProperty("UIPanel"):WaitForObject()
+local EVENT = script:GetCustomProperty("Event")
 
 local LOCAL_PLAYER = Game.GetLocalPlayer()
 local isOpen = false
@@ -9,6 +11,8 @@ local function ToggleCursorAndUI(cursorValue, uiValue)
 	UI.SetCursorVisible(cursorValue)
 	UI.SetCanCursorInteractWithUI(cursorValue)
 	INTERACTION_LABEL.visibility = uiValue and Visibility.FORCE_OFF or Visibility.FORCE_ON
+	UIPANEL.visibility = uiValue and Visibility.FORCE_ON or Visibility.FORCE_OFF
+	Events.Broadcast(EVENT, uiValue)
 end
 
 local function OnTriggerEnter(trigger, other)
