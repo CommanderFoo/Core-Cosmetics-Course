@@ -10,7 +10,6 @@ local isInsideArea = false
 local function ToggleCursorAndUI(cursorValue, uiValue)
 	UI.SetCursorVisible(cursorValue)
 	UI.SetCanCursorInteractWithUI(cursorValue)
-	INTERACTION_LABEL.visibility = uiValue and Visibility.FORCE_OFF or Visibility.FORCE_ON
 	UIPANEL.visibility = uiValue and Visibility.FORCE_ON or Visibility.FORCE_OFF
 	Events.Broadcast(EVENT, uiValue)
 end
@@ -24,10 +23,10 @@ end
 
 local function OnTriggerExit(trigger, other)
 	if other:IsA("Player") and other == LOCAL_PLAYER then
-		INTERACTION_LABEL.visibility = Visibility.FORCE_OFF
 		isInsideArea = false
 		isOpen = false
-		ToggleCursorAndUI(false, true)
+		INTERACTION_LABEL.visibility = Visibility.FORCE_OFF
+		ToggleCursorAndUI(false, false)
 	end
 end
 
@@ -37,9 +36,11 @@ local function OnActionPressed(player, action)
 		ToggleCursorAndUI(isOpen, isOpen)
 
 		if isOpen then
+			INTERACTION_LABEL.visibility = Visibility.FORCE_OFF
 			Events.BroadcastToServer("DisablePlayer")
 			Events.Broadcast("EnableOverrideCamera")
 		else
+			INTERACTION_LABEL.visibility = Visibility.FORCE_ON
 			Events.BroadcastToServer("EnablePlayer")
 			Events.Broadcast("DisableOverrideCamera")
 		end

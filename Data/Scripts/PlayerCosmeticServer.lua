@@ -72,7 +72,7 @@ local function ApplyCosmetic(player, categoryIndex, cosmeticIndex)
 end
 
 local function CategoryIsEnabled(categoryIndex)
-	return COSMETIC_CATEGORIES[categoryIndex].enabled
+	return not COSMETIC_CATEGORIES[categoryIndex].disabled
 end
 
 local function CosmeticIsEnabled(categoryIndex, cosmeticIndex)
@@ -80,7 +80,7 @@ local function CosmeticIsEnabled(categoryIndex, cosmeticIndex)
 		return
 	end
 
-	return COSMETIC_CATEGORIES[categoryIndex].cosmetics[cosmeticIndex].enabled
+	return not COSMETIC_CATEGORIES[categoryIndex].cosmetics[cosmeticIndex].disabled
 end
 
 local function EquipPlayerCosmetics(player)

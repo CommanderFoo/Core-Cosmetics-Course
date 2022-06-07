@@ -205,6 +205,12 @@ Objects {
     DetailRelevance {
       Value: "mc:edetaillevel:low"
     }
+    MinDetailLevel {
+      Value: "mc:edetaillevel:low"
+    }
+    MaxDetailLevel {
+      Value: "mc:edetaillevel:ultra"
+    }
   }
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"
@@ -587,6 +593,12 @@ Objects {
   NetworkContext {
     DetailRelevance {
       Value: "mc:edetaillevel:low"
+    }
+    MinDetailLevel {
+      Value: "mc:edetaillevel:low"
+    }
+    MaxDetailLevel {
+      Value: "mc:edetaillevel:ultra"
     }
   }
   NetworkRelevanceDistance {

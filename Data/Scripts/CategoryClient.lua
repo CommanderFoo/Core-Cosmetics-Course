@@ -16,18 +16,6 @@ local activeCosmetics = {}
 local categoriesCreated = false
 local totalItemsPerRow = math.floor(COSMETIC_PANEL.parent.width / 65)
 
--- local function OnClearClicked()
--- 	if activeCosmetics[activeCategoryIndex] ~= nil and activeCosmetics[activeCategoryIndex] ~= 0 then
--- 		local activeButton = COSMETIC_PANEL:FindChildByName(string.format("Category: %s Item: %s", activeCategoryIndex, activeCosmetics[activeCategoryIndex]))
-
--- 		if(Object.IsValid(activeButton)) then
--- 			activeButton:SetButtonColor(activeButton:GetDisabledColor())
--- 		end
--- 	end
-
--- 	Events.BroadcastToServer("cosmetic.clear", activeCategoryIndex)
--- end
-
 local function ClearCosmeticPanel()
 	for index, child in ipairs(COSMETIC_PANEL:GetChildren()) do
 		if index > 1 then
@@ -56,6 +44,14 @@ local function ClearActiveButton(categoryIndex, cosmeticIndex)
 	return alreadyActive
 end
 
+local function OnClearPressed()
+	if activeCosmetics[activeCategoryIndex] ~= nil and activeCosmetics[activeCategoryIndex] ~= 0 then
+		ClearActiveButton(activeCategoryIndex, activeCosmetics[activeCategoryIndex])
+	
+		Events.BroadcastToServer("cosmetic.clear", activeCategoryIndex)
+	end
+end
+
 local function AddActiveButton(button, categoryIndex, cosmeticIndex)
 	if activeCosmetics[categoryIndex] == nil then
 		activeCosmetics[categoryIndex] = 0
@@ -65,7 +61,7 @@ local function AddActiveButton(button, categoryIndex, cosmeticIndex)
 	button:SetButtonColor(button:GetPressedColor())
 end
 
-local function OnCosmeticClicked(button, categoryIndex, cosmeticIndex, row)
+local function OnCosmeticPressed(button, categoryIndex, cosmeticIndex, row)
 	local alreadyActive = ClearActiveButton(categoryIndex, cosmeticIndex)
 
 	if not alreadyActive then
@@ -90,7 +86,7 @@ local function LoadCategory(cosmetics, categoryIndex)
 	local totalCreated = 0
 
 	for index, row in ipairs(cosmetics) do
-		if row.enabled then
+		if not row.disabled then
 			local item = World.SpawnAsset(ITEM_BUTTON, { parent = COSMETIC_PANEL })
 
 			item:FindChildByName("Item Text").text = tostring(index)
@@ -99,7 +95,7 @@ local function LoadCategory(cosmetics, categoryIndex)
 			xOffset = xOffset + 65
 
 			item.name = string.format("Category: %s Item: %s", categoryIndex, index)
-			item.clickedEvent:Connect(OnCosmeticClicked, categoryIndex, index, row)
+			item.pressedEvent:Connect(OnCosmeticPressed, categoryIndex, index, row)
 
 			if activeCosmetics[categoryIndex] ~= nil and activeCosmetics[categoryIndex] == index then
 				item:SetButtonColor(item:GetPressedColor())
@@ -147,7 +143,7 @@ local function CreateCategories()
 	local offset = 0
 
 	for index, category in ipairs(COSMETIC_CATEGORIES) do
-		if category.enabled then
+		if not category.disabled then
 			local item = World.SpawnAsset(CATEGORY_ENTRY)
 			local button = item:FindDescendantByName("Category Button")
 			local indicator = item:FindDescendantByName("Indicator")
@@ -158,7 +154,7 @@ local function CreateCategories()
 			item.y = offset
 			offset = offset + 90
 
-			button.clickedEvent:Connect(OnButtonPressed, indicator, category, index)
+			button.pressedEvent:Connect(OnButtonPressed, indicator, category, index)
 
 			if activeButton == nil then
 				OnButtonPressed(button, indicator, category, index)
@@ -195,5 +191,7 @@ end
 OnPrivateDataChanged(LOCAL_PLAYER, "cosmetics")
 
 LOCAL_PLAYER.privateNetworkedDataChangedEvent:Connect(OnPrivateDataChanged)
+
+CLEAR_BUTTON.pressedEvent:Connect(OnClearPressed)
 
 Events.Connect("CosmeticUIToggle", OnUIToggled)

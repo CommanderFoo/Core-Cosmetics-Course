@@ -2,7 +2,7 @@ Assets {
   Id: 7517662919555118005
   Name: "Custom Mad Hatter Blend"
   PlatformAssetType: 13
-  SerializationVersion: 113
+  SerializationVersion: 115
   CustomMaterialAsset {
     BaseMaterialId: 271728502152210848
     ParameterOverrides {

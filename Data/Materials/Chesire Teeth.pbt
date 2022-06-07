@@ -2,7 +2,7 @@ Assets {
   Id: 10350686342760240381
   Name: "Chesire Teeth"
   PlatformAssetType: 13
-  SerializationVersion: 113
+  SerializationVersion: 115
   CustomMaterialAsset {
     BaseMaterialId: 13608311118731858567
     ParameterOverrides {

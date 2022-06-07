@@ -2,7 +2,7 @@ Assets {
   Id: 15818094446046129635
   Name: "Custom Snow 01"
   PlatformAssetType: 13
-  SerializationVersion: 113
+  SerializationVersion: 115
   CustomMaterialAsset {
     BaseMaterialId: 6319499499019742013
     ParameterOverrides {

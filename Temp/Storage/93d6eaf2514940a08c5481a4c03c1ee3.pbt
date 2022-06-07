@@ -9,7 +9,7 @@ Entries {
           IntVar: 1
         }
         SimpleValue {
-          IntVar: 6
+          IntVar: 0
         }
       }
       Entries {
@@ -41,7 +41,7 @@ Entries {
           IntVar: 5
         }
         SimpleValue {
-          IntVar: 3
+          IntVar: 0
         }
       }
       Entries {

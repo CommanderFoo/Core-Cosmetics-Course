@@ -2,7 +2,7 @@ Assets {
   Id: 254465958773676970
   Name: "Cheshire Cat Stripes"
   PlatformAssetType: 13
-  SerializationVersion: 113
+  SerializationVersion: 115
   CustomMaterialAsset {
     BaseMaterialId: 3904254729423244526
     ParameterOverrides {
