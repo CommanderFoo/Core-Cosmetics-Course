@@ -1,10 +1,25 @@
 local COSMETIC_CATEGORIES = require(script:GetCustomProperty("CosmeticCategories"))
+
+local PRIMARY_COLOR_PALETTE = require(script:GetCustomProperty("PrimaryColorPalette"))
+local SECONDARY_COLOR_PALETTE = require(script:GetCustomProperty("SecondaryColorPalette"))
+local TERTIARY_COLOR_PALETTE = require(script:GetCustomProperty("TertiaryColorPalette"))
+
 local CONTAINER = script:GetCustomProperty("Container"):WaitForObject()
 local CATEGORY_ENTRY = script:GetCustomProperty("CategoryEntry")
 local HEADER_TEXT = script:GetCustomProperty("HeaderText"):WaitForObject()
 local COSMETIC_PANEL = script:GetCustomProperty("CosmeticPanel"):WaitForObject()
 local CLEAR_BUTTON = script:GetCustomProperty("ClearButton"):WaitForObject()
 local ITEM_BUTTON = script:GetCustomProperty("ItemButton")
+local COLOR_BUTTON = script:GetCustomProperty("ColorButton")
+
+---@type UIPanel
+local PRIMARY_COLOR_PANEL = script:GetCustomProperty("PrimaryColorPanel"):WaitForObject()
+
+---@type UIPanel
+local SECONDARY_COLOR_PANEL = script:GetCustomProperty("SecondaryColorPanel"):WaitForObject()
+
+---@type UIPanel
+local TERTIARY_COLOR_PANEL = script:GetCustomProperty("TertiaryColorPanel"):WaitForObject()
 
 local LOCAL_PLAYER = Game.GetLocalPlayer()
 
@@ -15,6 +30,17 @@ local cosmeticPlayerData = {}
 local activeCosmetics = {}
 local categoriesCreated = false
 local totalItemsPerRow = math.floor(COSMETIC_PANEL.parent.width / 65)
+local activePrimaryColorButtons = {}
+local activeSecondaryColorButtons = {}
+local activeTertiaryColorButtons = {}
+
+local ColorType = {
+
+	["PRIMARY"] = 1,
+	["SECONDARY"] = 2,
+	["TERTIARY"] = 3
+
+}
 
 local function ClearCosmeticPanel()
 	for index, child in ipairs(COSMETIC_PANEL:GetChildren()) do
@@ -66,16 +92,22 @@ local function OnCosmeticPressed(button, categoryIndex, cosmeticIndex, row)
 
 	if not alreadyActive then
 		AddActiveButton(button, categoryIndex, cosmeticIndex)
-		--LoadCosmeticColorPalette(row.p)
 	end
 
 	Events.BroadcastToServer("cosmetic.apply", categoryIndex, cosmeticIndex)
+end
+
+local function UpdatePalettes()
+	PRIMARY_COLOR_PANEL.parent.y = COSMETIC_PANEL.y + COSMETIC_PANEL.height + 5
+	SECONDARY_COLOR_PANEL.parent.y = PRIMARY_COLOR_PANEL.parent.y + PRIMARY_COLOR_PANEL.parent.height + 5
+	TERTIARY_COLOR_PANEL.parent.y = SECONDARY_COLOR_PANEL.parent.y + SECONDARY_COLOR_PANEL.parent.height + 5
 end
 
 local function LoadCategory(cosmetics, categoryIndex)
 	ClearCosmeticPanel()
 
 	if cosmetics == nil then
+		COSMETIC_PANEL.height = 65
 		return
 	end
 
@@ -113,13 +145,14 @@ local function LoadCategory(cosmetics, categoryIndex)
 		end
 	end
 
-	COSMETIC_PANEL.height = (rows == 0 and 1 or rows) * 65
+	COSMETIC_PANEL.height = (rows == 0 and 1 or (rows + 1)) * 65
 end
 
 local function ShowCategory(category, categoryIndex)
 	activeCategoryIndex = categoryIndex
 	HEADER_TEXT.text = string.upper(category.name .. " Style")
 	LoadCategory(category.cosmetics, categoryIndex)
+	UpdatePalettes()
 end
 
 local function OnButtonPressed(button, indicator, category, categoryIndex)
@@ -163,6 +196,97 @@ local function CreateCategories()
 	end
 end
 
+local function ApplyColorToCosmetic(color, colorType)
+	if activeCosmetics[activeCategoryIndex] ~= nil and activeCosmetics[activeCategoryIndex] ~= 0 then
+		for index, object in ipairs(LOCAL_PLAYER:GetAttachedObjects()) do
+			if object.name == "Cosmetic Item - [Cat: " .. tostring(activeCategoryIndex) .. ", Item: " .. tostring(activeCosmetics[activeCategoryIndex]) .. "]" then
+				local meshes = object:FindDescendantsByType("StaticMesh")
+
+				for m, mesh in ipairs(meshes) do
+					if mesh:GetCustomProperty("Ignore") == nil or not mesh:GetCustomProperty("Ignore") then
+						-- local materialSlots = mesh:GetMaterialSlots()
+
+						-- for mat, material in ipairs(materials) do
+						-- 	print(material)
+						-- end
+
+						if color == nil then
+							mesh:ResetColor()
+						else
+							mesh:SetColor(color)
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+local function OnColorPressed(button, color, index, panel, colorTable, colorType)
+	if colorTable[panel] == nil then
+		colorTable[panel] = button
+		button:SetButtonColor(button:GetHoveredColor())
+		ApplyColorToCosmetic(color, colorType)
+		Events.BroadcastToServer("cosmetic.color", color, index, activeCategoryIndex, colorType)
+		return
+	end
+
+	local removingColor = false
+
+	if button == colorTable[panel] then
+		if button:GetButtonColor() == colorTable[panel]:GetDisabledColor() then
+			button:SetButtonColor(button:GetHoveredColor())
+		else
+			removingColor = true
+			button:SetButtonColor(button:GetDisabledColor())
+		end
+	else
+		button:SetButtonColor(button:GetHoveredColor())
+		colorTable[panel]:SetButtonColor(colorTable[panel]:GetDisabledColor())
+		colorTable[panel] = button
+	end
+
+	if removingColor then
+		color = nil
+	end
+
+	ApplyColorToCosmetic(color, colorType)
+	Events.BroadcastToServer("cosmetic.color", color, index, activeCategoryIndex, colorType)
+end
+
+local function SpawnColors(palette, panel, previous, colorTable, type)
+	local xOffset = 0
+	local yOffset = 0
+	local rows = 1
+
+	for index, row in ipairs(palette) do
+		local button = World.SpawnAsset(COLOR_BUTTON, { parent = panel })
+
+		button:GetChildren()[1]:SetColor(row.color)
+		button.pressedEvent:Connect(OnColorPressed, row.color, index, panel, colorTable, type)
+		
+		button.x = xOffset
+		button.y = yOffset
+
+		xOffset = xOffset + 65
+
+		if index % totalItemsPerRow == 0 and index ~= #palette then
+			yOffset = yOffset + 65
+			xOffset = 0
+			rows = rows + 1
+		end
+	end
+
+	panel.parent.height = 50 + (rows * 65)
+	panel.parent.y = previous.y + previous.height + 5
+end
+
+local function CreateColors()
+	SpawnColors(PRIMARY_COLOR_PALETTE, PRIMARY_COLOR_PANEL, COSMETIC_PANEL, activePrimaryColorButtons, ColorType.PRIMARY)
+	SpawnColors(SECONDARY_COLOR_PALETTE, SECONDARY_COLOR_PANEL, PRIMARY_COLOR_PANEL.parent, activeSecondaryColorButtons, ColorType.SECONDARY)
+	SpawnColors(TERTIARY_COLOR_PALETTE, TERTIARY_COLOR_PANEL, SECONDARY_COLOR_PANEL.parent, activeTertiaryColorButtons, ColorType.TERTIARY)
+end
+
 local function CreateactiveCosmeticsTable()
 	if cosmeticPlayerData ~= nil then
 		for categoryIndex, cosmetic in ipairs(cosmeticPlayerData) do
@@ -185,6 +309,7 @@ end
 local function OnUIToggled()
 	if not categoriesCreated then
 		CreateCategories()
+		CreateColors()
 	end
 end
 

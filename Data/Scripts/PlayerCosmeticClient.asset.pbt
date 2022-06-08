@@ -1,6 +1,6 @@
 Assets {
   Id: 18281097441019536169
-  Name: "CategoryClient"
+  Name: "PlayerCosmeticClient"
   PlatformAssetType: 3
   TextAsset {
     CustomParameters {

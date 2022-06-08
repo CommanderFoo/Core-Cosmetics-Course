@@ -20,6 +20,45 @@ Assets {
         ChildIds: 14654053084902537233
         ChildIds: 7470959377476084980
         UnregisteredParameters {
+          Overrides {
+            Name: "cs:PrimaryColor"
+            Color {
+            }
+          }
+          Overrides {
+            Name: "cs:SecondaryColor"
+            Color {
+            }
+          }
+          Overrides {
+            Name: "cs:TertiaryColor"
+            Color {
+            }
+          }
+          Overrides {
+            Name: "cs:PrimaryColor:isrep"
+            Bool: true
+          }
+          Overrides {
+            Name: "cs:PrimaryColor:ml"
+            Bool: false
+          }
+          Overrides {
+            Name: "cs:SecondaryColor:isrep"
+            Bool: true
+          }
+          Overrides {
+            Name: "cs:SecondaryColor:ml"
+            Bool: false
+          }
+          Overrides {
+            Name: "cs:TertiaryColor:isrep"
+            Bool: true
+          }
+          Overrides {
+            Name: "cs:TertiaryColor:ml"
+            Bool: false
+          }
         }
         WantsNetworking: true
         Collidable_v2 {

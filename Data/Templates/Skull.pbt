@@ -17,6 +17,35 @@ Assets {
         }
         ParentId: 4781671109827199097
         ChildIds: 2409208901005721860
+        UnregisteredParameters {
+          Overrides {
+            Name: "cs:PrimaryColor"
+            Color {
+            }
+          }
+          Overrides {
+            Name: "cs:SecondaryColor"
+            Color {
+            }
+          }
+          Overrides {
+            Name: "cs:TertiaryColor"
+            Color {
+            }
+          }
+          Overrides {
+            Name: "cs:PrimaryColor:isrep"
+            Bool: true
+          }
+          Overrides {
+            Name: "cs:SecondaryColor:isrep"
+            Bool: true
+          }
+          Overrides {
+            Name: "cs:TertiaryColor:isrep"
+            Bool: true
+          }
+        }
         WantsNetworking: true
         Collidable_v2 {
           Value: "mc:ecollisionsetting:forceoff"

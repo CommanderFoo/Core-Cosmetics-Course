@@ -1,13 +1,13 @@
 Assets {
-  Id: 11539466109715144339
-  Name: "Ring Wireframe"
+  Id: 103425587346297514
+  Name: "Volleyball"
   PlatformAssetType: 5
   TemplateAsset {
     ObjectBlock {
-      RootId: 1266777758917841529
+      RootId: 7966252939242214290
       Objects {
-        Id: 1266777758917841529
-        Name: "Ring Wireframe"
+        Id: 7966252939242214290
+        Name: "Volleyball"
         Transform {
           Scale {
             X: 1
@@ -16,7 +16,7 @@ Assets {
           }
         }
         ParentId: 4781671109827199097
-        ChildIds: 172025798607831175
+        ChildIds: 5311829816432387945
         UnregisteredParameters {
           Overrides {
             Name: "cs:PrimaryColor"
@@ -87,21 +87,24 @@ Assets {
         }
       }
       Objects {
-        Id: 172025798607831175
+        Id: 5311829816432387945
         Name: "Geo"
         Transform {
           Location {
+            X: -1.94497299
+            Y: 0.241017088
+            Z: 13.3576765
           }
           Rotation {
           }
           Scale {
-            X: 0.45
-            Y: 0.45
-            Z: 0.45
+            X: 1
+            Y: 1
+            Z: 1
           }
         }
-        ParentId: 1266777758917841529
-        ChildIds: 14038623617099032023
+        ParentId: 7966252939242214290
+        ChildIds: 17211115726435976492
         Collidable_v2 {
           Value: "mc:ecollisionsetting:inheritfromparent"
         }
@@ -122,32 +125,20 @@ Assets {
         }
       }
       Objects {
-        Id: 14038623617099032023
-        Name: "Ring - Thick"
+        Id: 17211115726435976492
+        Name: "Ball - Volleyball 01"
         Transform {
           Location {
           }
           Rotation {
           }
           Scale {
-            X: 1
-            Y: 1
-            Z: 1.30000007
+            X: 1.2
+            Y: 1.2
+            Z: 1.2
           }
         }
-        ParentId: 172025798607831175
-        UnregisteredParameters {
-          Overrides {
-            Name: "ma:Shared_BaseMaterial:id"
-            AssetReference {
-              Id: 9460136157756697427
-            }
-          }
-          Overrides {
-            Name: "ma:Shared_BaseMaterial:smart"
-            Bool: false
-          }
-        }
+        ParentId: 5311829816432387945
         Collidable_v2 {
           Value: "mc:ecollisionsetting:inheritfromparent"
         }
@@ -162,7 +153,7 @@ Assets {
         }
         CoreMesh {
           MeshAsset {
-            Id: 11014141067497230961
+            Id: 8643948483022031492
           }
           Teams {
             IsTeamCollisionEnabled: true
@@ -185,21 +176,12 @@ Assets {
       }
     }
     Assets {
-      Id: 11014141067497230961
-      Name: "Ring - Thick"
+      Id: 8643948483022031492
+      Name: "Ball - Volleyball 01"
       PlatformAssetType: 1
       PrimaryAsset {
         AssetType: "StaticMeshAssetRef"
-        AssetId: "sm_torus_005"
-      }
-    }
-    Assets {
-      Id: 9460136157756697427
-      Name: "Wireframe"
-      PlatformAssetType: 2
-      PrimaryAsset {
-        AssetType: "MaterialAssetRef"
-        AssetId: "wireframe_glow_001"
+        AssetId: "sm_prop_urb_ball_volleyball_01_ref"
       }
     }
     PrimaryAssetId {
@@ -209,5 +191,5 @@ Assets {
   }
   SerializationVersion: 115
   VirtualFolderPath: "Cosmetics"
-  VirtualFolderPath: "Pelvis"
+  VirtualFolderPath: "Head"
 }

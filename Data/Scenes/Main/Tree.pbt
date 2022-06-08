@@ -52,6 +52,47 @@ Objects {
   ParentId: 4781671109827199097
   ChildIds: 16334913400939205878
   ChildIds: 1302914409489710458
+  UnregisteredParameters {
+    Overrides {
+      Name: "cs:PrimaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:SecondaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:TertiaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:ml"
+      Bool: false
+    }
+  }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
@@ -189,6 +230,47 @@ Objects {
   ChildIds: 17350947280034350147
   ChildIds: 11695674039229126980
   ChildIds: 11848345389611055370
+  UnregisteredParameters {
+    Overrides {
+      Name: "cs:PrimaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:SecondaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:TertiaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:ml"
+      Bool: false
+    }
+  }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:forceoff"
   }
@@ -218,7 +300,7 @@ Objects {
 }
 Objects {
   Id: 11848345389611055370
-  Name: "CategoryClient"
+  Name: "PlayerCosmeticClient"
   Transform {
     Location {
     }
@@ -236,6 +318,24 @@ Objects {
       Name: "cs:CosmeticCategories"
       AssetReference {
         Id: 14402021475516488994
+      }
+    }
+    Overrides {
+      Name: "cs:PrimaryColorPalette"
+      AssetReference {
+        Id: 10603777918199937337
+      }
+    }
+    Overrides {
+      Name: "cs:SecondaryColorPalette"
+      AssetReference {
+        Id: 6835082458021292162
+      }
+    }
+    Overrides {
+      Name: "cs:TertiaryColorPalette"
+      AssetReference {
+        Id: 11975458049345002470
       }
     }
     Overrides {
@@ -276,6 +376,69 @@ Objects {
       AssetReference {
         Id: 10404635513327958627
       }
+    }
+    Overrides {
+      Name: "cs:ColorButton"
+      AssetReference {
+        Id: 15919376163054027273
+      }
+    }
+    Overrides {
+      Name: "cs:PrimaryColorPanel"
+      ObjectReference {
+        SelfId: 13883287499655531256
+      }
+    }
+    Overrides {
+      Name: "cs:SecondaryColorPanel"
+      ObjectReference {
+        SelfId: 1136519510714057913
+      }
+    }
+    Overrides {
+      Name: "cs:TertiaryColorPanel"
+      ObjectReference {
+        SelfId: 3254732929557938203
+      }
+    }
+    Overrides {
+      Name: "cs:PrimaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:SecondaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:TertiaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:ml"
+      Bool: false
     }
   }
   Collidable_v2 {
@@ -320,6 +483,45 @@ Objects {
       ObjectReference {
         SelfId: 17621579706923635295
       }
+    }
+    Overrides {
+      Name: "cs:PrimaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:SecondaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:TertiaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:ml"
+      Bool: false
     }
   }
   Collidable_v2 {
@@ -381,6 +583,45 @@ Objects {
       Name: "cs:Event"
       String: "CosmeticUIToggle"
     }
+    Overrides {
+      Name: "cs:PrimaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:SecondaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:TertiaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:ml"
+      Bool: false
+    }
   }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -423,6 +664,47 @@ Objects {
   ChildIds: 606497376423954391
   ChildIds: 14153385274223620359
   ChildIds: 6391176233666916187
+  UnregisteredParameters {
+    Overrides {
+      Name: "cs:PrimaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:SecondaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:TertiaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:ml"
+      Bool: false
+    }
+  }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
@@ -461,6 +743,45 @@ Objects {
   }
   ParentId: 18273135735424674543
   UnregisteredParameters {
+    Overrides {
+      Name: "cs:PrimaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:SecondaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:TertiaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:ml"
+      Bool: false
+    }
   }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -536,6 +857,47 @@ Objects {
     }
   }
   ParentId: 18273135735424674543
+  UnregisteredParameters {
+    Overrides {
+      Name: "cs:PrimaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:SecondaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:TertiaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:ml"
+      Bool: false
+    }
+  }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
@@ -578,6 +940,47 @@ Objects {
   ParentId: 18273135735424674543
   ChildIds: 13786696306280209619
   ChildIds: 17621579706923635295
+  UnregisteredParameters {
+    Overrides {
+      Name: "cs:PrimaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:SecondaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:TertiaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:ml"
+      Bool: false
+    }
+  }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:forceoff"
   }
@@ -623,6 +1026,47 @@ Objects {
     }
   }
   ParentId: 606497376423954391
+  UnregisteredParameters {
+    Overrides {
+      Name: "cs:PrimaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:SecondaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:TertiaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:ml"
+      Bool: false
+    }
+  }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
@@ -677,6 +1121,47 @@ Objects {
   ParentId: 606497376423954391
   ChildIds: 1295520017669104817
   ChildIds: 6871725160970785464
+  UnregisteredParameters {
+    Overrides {
+      Name: "cs:PrimaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:SecondaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:TertiaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:ml"
+      Bool: false
+    }
+  }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
@@ -742,6 +1227,47 @@ Objects {
   ParentId: 13786696306280209619
   ChildIds: 1221452744652631757
   ChildIds: 15006423300819658242
+  UnregisteredParameters {
+    Overrides {
+      Name: "cs:PrimaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:SecondaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:TertiaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:ml"
+      Bool: false
+    }
+  }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
@@ -797,6 +1323,50 @@ Objects {
   ParentId: 6871725160970785464
   ChildIds: 11963007768424750057
   ChildIds: 3276244792849947080
+  ChildIds: 5669648437334289806
+  ChildIds: 1975337875352305462
+  ChildIds: 2974758029415688366
+  UnregisteredParameters {
+    Overrides {
+      Name: "cs:PrimaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:SecondaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:TertiaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:ml"
+      Bool: false
+    }
+  }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
@@ -837,6 +1407,1064 @@ Objects {
   }
 }
 Objects {
+  Id: 2974758029415688366
+  Name: "Tertiary Color Panel"
+  Transform {
+    Location {
+    }
+    Rotation {
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 15006423300819658242
+  ChildIds: 15571594610341332432
+  ChildIds: 3254732929557938203
+  UnregisteredParameters {
+    Overrides {
+      Name: "cs:PrimaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:SecondaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:TertiaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:ml"
+      Bool: false
+    }
+  }
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  CameraCollidable {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  EditorIndicatorVisibility {
+    Value: "mc:eindicatorvisibility:visiblewhenselected"
+  }
+  Control {
+    Width: 100
+    Height: 120
+    UIY: 360
+    RenderTransformPivot {
+      Anchor {
+        Value: "mc:euianchor:middlecenter"
+      }
+    }
+    UseParentWidth: true
+    Panel {
+      Opacity: 1
+    }
+    AnchorLayout {
+      SelfAnchor {
+        Anchor {
+          Value: "mc:euianchor:topleft"
+        }
+      }
+      TargetAnchor {
+        Anchor {
+          Value: "mc:euianchor:topleft"
+        }
+      }
+    }
+  }
+}
+Objects {
+  Id: 3254732929557938203
+  Name: "Colors"
+  Transform {
+    Location {
+    }
+    Rotation {
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 2974758029415688366
+  UnregisteredParameters {
+    Overrides {
+      Name: "cs:PrimaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:SecondaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:TertiaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:ml"
+      Bool: false
+    }
+  }
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  CameraCollidable {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  EditorIndicatorVisibility {
+    Value: "mc:eindicatorvisibility:visiblewhenselected"
+  }
+  Control {
+    Width: 100
+    Height: 65
+    UIY: 50
+    RenderTransformPivot {
+      Anchor {
+        Value: "mc:euianchor:middlecenter"
+      }
+    }
+    UseParentWidth: true
+    Panel {
+      Opacity: 1
+    }
+    AnchorLayout {
+      SelfAnchor {
+        Anchor {
+          Value: "mc:euianchor:topleft"
+        }
+      }
+      TargetAnchor {
+        Anchor {
+          Value: "mc:euianchor:topleft"
+        }
+      }
+    }
+  }
+}
+Objects {
+  Id: 15571594610341332432
+  Name: "Header"
+  Transform {
+    Location {
+    }
+    Rotation {
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 2974758029415688366
+  ChildIds: 5412481614257308230
+  UnregisteredParameters {
+    Overrides {
+      Name: "cs:PrimaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:SecondaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:TertiaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:ml"
+      Bool: false
+    }
+  }
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  CameraCollidable {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  EditorIndicatorVisibility {
+    Value: "mc:eindicatorvisibility:visiblewhenselected"
+  }
+  Control {
+    Width: 220
+    Height: 40
+    RenderTransformPivot {
+      Anchor {
+        Value: "mc:euianchor:middlecenter"
+      }
+    }
+    UseParentWidth: true
+    Image {
+      Brush {
+        Id: 841534158063459245
+      }
+      Color {
+        A: 0.4
+      }
+      TeamSettings {
+      }
+      ShadowColor {
+        A: 1
+      }
+      ShadowOffset {
+      }
+      ScreenshotIndex: 1
+    }
+    AnchorLayout {
+      SelfAnchor {
+        Anchor {
+          Value: "mc:euianchor:topcenter"
+        }
+      }
+      TargetAnchor {
+        Anchor {
+          Value: "mc:euianchor:topcenter"
+        }
+      }
+    }
+  }
+}
+Objects {
+  Id: 5412481614257308230
+  Name: "Header Text"
+  Transform {
+    Location {
+    }
+    Rotation {
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 15571594610341332432
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  CameraCollidable {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  EditorIndicatorVisibility {
+    Value: "mc:eindicatorvisibility:visiblewhenselected"
+  }
+  Control {
+    Width: 200
+    Height: 60
+    UIY: 2
+    RenderTransformPivot {
+      Anchor {
+        Value: "mc:euianchor:middlecenter"
+      }
+    }
+    UseParentWidth: true
+    UseParentHeight: true
+    Text {
+      Label: "TERTIARY COLOR"
+      Color {
+        R: 1
+        G: 1
+        B: 1
+        A: 1
+      }
+      Size: 16
+      Justification {
+        Value: "mc:etextjustify:center"
+      }
+      Font {
+        Id: 15404339692617545438
+      }
+      VerticalJustification {
+        Value: "mc:everticaljustification:center"
+      }
+      ShadowColor {
+        A: 1
+      }
+      ShadowOffset {
+      }
+      OutlineColor {
+        A: 1
+      }
+      OutlineSize: 2
+    }
+    AnchorLayout {
+      SelfAnchor {
+        Anchor {
+          Value: "mc:euianchor:middlecenter"
+        }
+      }
+      TargetAnchor {
+        Anchor {
+          Value: "mc:euianchor:middlecenter"
+        }
+      }
+    }
+  }
+}
+Objects {
+  Id: 1975337875352305462
+  Name: "Secondary Color Panel"
+  Transform {
+    Location {
+    }
+    Rotation {
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 15006423300819658242
+  ChildIds: 18430864154933140547
+  ChildIds: 1136519510714057913
+  UnregisteredParameters {
+    Overrides {
+      Name: "cs:PrimaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:SecondaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:TertiaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:ml"
+      Bool: false
+    }
+  }
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  CameraCollidable {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  EditorIndicatorVisibility {
+    Value: "mc:eindicatorvisibility:visiblewhenselected"
+  }
+  Control {
+    Width: 100
+    Height: 120
+    UIY: 240
+    RenderTransformPivot {
+      Anchor {
+        Value: "mc:euianchor:middlecenter"
+      }
+    }
+    UseParentWidth: true
+    Panel {
+      Opacity: 1
+    }
+    AnchorLayout {
+      SelfAnchor {
+        Anchor {
+          Value: "mc:euianchor:topleft"
+        }
+      }
+      TargetAnchor {
+        Anchor {
+          Value: "mc:euianchor:topleft"
+        }
+      }
+    }
+  }
+}
+Objects {
+  Id: 1136519510714057913
+  Name: "Colors"
+  Transform {
+    Location {
+    }
+    Rotation {
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 1975337875352305462
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  CameraCollidable {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  EditorIndicatorVisibility {
+    Value: "mc:eindicatorvisibility:visiblewhenselected"
+  }
+  Control {
+    Width: 100
+    Height: 65
+    UIY: 50
+    RenderTransformPivot {
+      Anchor {
+        Value: "mc:euianchor:middlecenter"
+      }
+    }
+    UseParentWidth: true
+    Panel {
+      Opacity: 1
+    }
+    AnchorLayout {
+      SelfAnchor {
+        Anchor {
+          Value: "mc:euianchor:topleft"
+        }
+      }
+      TargetAnchor {
+        Anchor {
+          Value: "mc:euianchor:topleft"
+        }
+      }
+    }
+  }
+}
+Objects {
+  Id: 18430864154933140547
+  Name: "Header"
+  Transform {
+    Location {
+    }
+    Rotation {
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 1975337875352305462
+  ChildIds: 11264629598379614855
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  CameraCollidable {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  EditorIndicatorVisibility {
+    Value: "mc:eindicatorvisibility:visiblewhenselected"
+  }
+  Control {
+    Width: 220
+    Height: 40
+    RenderTransformPivot {
+      Anchor {
+        Value: "mc:euianchor:middlecenter"
+      }
+    }
+    UseParentWidth: true
+    Image {
+      Brush {
+        Id: 841534158063459245
+      }
+      Color {
+        A: 0.4
+      }
+      TeamSettings {
+      }
+      ShadowColor {
+        A: 1
+      }
+      ShadowOffset {
+      }
+      ScreenshotIndex: 1
+    }
+    AnchorLayout {
+      SelfAnchor {
+        Anchor {
+          Value: "mc:euianchor:topcenter"
+        }
+      }
+      TargetAnchor {
+        Anchor {
+          Value: "mc:euianchor:topcenter"
+        }
+      }
+    }
+  }
+}
+Objects {
+  Id: 11264629598379614855
+  Name: "Header Text"
+  Transform {
+    Location {
+    }
+    Rotation {
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 18430864154933140547
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  CameraCollidable {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  EditorIndicatorVisibility {
+    Value: "mc:eindicatorvisibility:visiblewhenselected"
+  }
+  Control {
+    Width: 200
+    Height: 60
+    UIY: 2
+    RenderTransformPivot {
+      Anchor {
+        Value: "mc:euianchor:middlecenter"
+      }
+    }
+    UseParentWidth: true
+    UseParentHeight: true
+    Text {
+      Label: "SECONDARY COLOR"
+      Color {
+        R: 1
+        G: 1
+        B: 1
+        A: 1
+      }
+      Size: 16
+      Justification {
+        Value: "mc:etextjustify:center"
+      }
+      Font {
+        Id: 15404339692617545438
+      }
+      VerticalJustification {
+        Value: "mc:everticaljustification:center"
+      }
+      ShadowColor {
+        A: 1
+      }
+      ShadowOffset {
+      }
+      OutlineColor {
+        A: 1
+      }
+      OutlineSize: 2
+    }
+    AnchorLayout {
+      SelfAnchor {
+        Anchor {
+          Value: "mc:euianchor:middlecenter"
+        }
+      }
+      TargetAnchor {
+        Anchor {
+          Value: "mc:euianchor:middlecenter"
+        }
+      }
+    }
+  }
+}
+Objects {
+  Id: 5669648437334289806
+  Name: "Primary Color Panel"
+  Transform {
+    Location {
+    }
+    Rotation {
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 15006423300819658242
+  ChildIds: 3661016039716320152
+  ChildIds: 13883287499655531256
+  UnregisteredParameters {
+    Overrides {
+      Name: "cs:PrimaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:SecondaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:TertiaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:ml"
+      Bool: false
+    }
+  }
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  CameraCollidable {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  EditorIndicatorVisibility {
+    Value: "mc:eindicatorvisibility:visiblewhenselected"
+  }
+  Control {
+    Width: 100
+    Height: 120
+    UIY: 120
+    RenderTransformPivot {
+      Anchor {
+        Value: "mc:euianchor:middlecenter"
+      }
+    }
+    UseParentWidth: true
+    Panel {
+      Opacity: 1
+    }
+    AnchorLayout {
+      SelfAnchor {
+        Anchor {
+          Value: "mc:euianchor:topleft"
+        }
+      }
+      TargetAnchor {
+        Anchor {
+          Value: "mc:euianchor:topleft"
+        }
+      }
+    }
+  }
+}
+Objects {
+  Id: 13883287499655531256
+  Name: "Colors"
+  Transform {
+    Location {
+    }
+    Rotation {
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 5669648437334289806
+  UnregisteredParameters {
+    Overrides {
+      Name: "cs:PrimaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:SecondaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:TertiaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:ml"
+      Bool: false
+    }
+  }
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  CameraCollidable {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  EditorIndicatorVisibility {
+    Value: "mc:eindicatorvisibility:visiblewhenselected"
+  }
+  Control {
+    Width: 100
+    Height: 65
+    UIY: 50
+    RenderTransformPivot {
+      Anchor {
+        Value: "mc:euianchor:middlecenter"
+      }
+    }
+    UseParentWidth: true
+    Panel {
+      Opacity: 1
+    }
+    AnchorLayout {
+      SelfAnchor {
+        Anchor {
+          Value: "mc:euianchor:topleft"
+        }
+      }
+      TargetAnchor {
+        Anchor {
+          Value: "mc:euianchor:topleft"
+        }
+      }
+    }
+  }
+}
+Objects {
+  Id: 3661016039716320152
+  Name: "Header"
+  Transform {
+    Location {
+    }
+    Rotation {
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 5669648437334289806
+  ChildIds: 17726980267377375824
+  UnregisteredParameters {
+    Overrides {
+      Name: "cs:PrimaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:SecondaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:TertiaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:ml"
+      Bool: false
+    }
+  }
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  CameraCollidable {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  EditorIndicatorVisibility {
+    Value: "mc:eindicatorvisibility:visiblewhenselected"
+  }
+  Control {
+    Width: 220
+    Height: 40
+    RenderTransformPivot {
+      Anchor {
+        Value: "mc:euianchor:middlecenter"
+      }
+    }
+    UseParentWidth: true
+    Image {
+      Brush {
+        Id: 841534158063459245
+      }
+      Color {
+        A: 0.4
+      }
+      TeamSettings {
+      }
+      ShadowColor {
+        A: 1
+      }
+      ShadowOffset {
+      }
+      ScreenshotIndex: 1
+    }
+    AnchorLayout {
+      SelfAnchor {
+        Anchor {
+          Value: "mc:euianchor:topcenter"
+        }
+      }
+      TargetAnchor {
+        Anchor {
+          Value: "mc:euianchor:topcenter"
+        }
+      }
+    }
+  }
+}
+Objects {
+  Id: 17726980267377375824
+  Name: "Header Text"
+  Transform {
+    Location {
+    }
+    Rotation {
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 3661016039716320152
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  CameraCollidable {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  EditorIndicatorVisibility {
+    Value: "mc:eindicatorvisibility:visiblewhenselected"
+  }
+  Control {
+    Width: 200
+    Height: 60
+    UIY: 2
+    RenderTransformPivot {
+      Anchor {
+        Value: "mc:euianchor:middlecenter"
+      }
+    }
+    UseParentWidth: true
+    UseParentHeight: true
+    Text {
+      Label: "PRIMARY COLOR"
+      Color {
+        R: 1
+        G: 1
+        B: 1
+        A: 1
+      }
+      Size: 16
+      Justification {
+        Value: "mc:etextjustify:center"
+      }
+      Font {
+        Id: 15404339692617545438
+      }
+      VerticalJustification {
+        Value: "mc:everticaljustification:center"
+      }
+      ShadowColor {
+        A: 1
+      }
+      ShadowOffset {
+      }
+      OutlineColor {
+        A: 1
+      }
+      OutlineSize: 2
+    }
+    AnchorLayout {
+      SelfAnchor {
+        Anchor {
+          Value: "mc:euianchor:middlecenter"
+        }
+      }
+      TargetAnchor {
+        Anchor {
+          Value: "mc:euianchor:middlecenter"
+        }
+      }
+    }
+  }
+}
+Objects {
   Id: 3276244792849947080
   Name: "Cosmetic Panel"
   Transform {
@@ -852,6 +2480,47 @@ Objects {
   }
   ParentId: 15006423300819658242
   ChildIds: 10092779116375366240
+  UnregisteredParameters {
+    Overrides {
+      Name: "cs:PrimaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:SecondaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:TertiaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:ml"
+      Bool: false
+    }
+  }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
@@ -947,6 +2616,47 @@ Objects {
   }
   ParentId: 15006423300819658242
   ChildIds: 16619618969744708882
+  UnregisteredParameters {
+    Overrides {
+      Name: "cs:PrimaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:SecondaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:TertiaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:ml"
+      Bool: false
+    }
+  }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
@@ -1094,6 +2804,47 @@ Objects {
   ParentId: 6871725160970785464
   ChildIds: 1937862282172558536
   ChildIds: 5519407647640931458
+  UnregisteredParameters {
+    Overrides {
+      Name: "cs:PrimaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:SecondaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:TertiaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:ml"
+      Bool: false
+    }
+  }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
@@ -1356,6 +3107,47 @@ Objects {
   ChildIds: 8843286543164641671
   ChildIds: 957351107598403999
   ChildIds: 8670428864554188555
+  UnregisteredParameters {
+    Overrides {
+      Name: "cs:PrimaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:SecondaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:TertiaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:ml"
+      Bool: false
+    }
+  }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
@@ -1966,6 +3758,47 @@ Objects {
   ChildIds: 7811691153902488110
   ChildIds: 10307131907842176461
   ChildIds: 10081144701168070004
+  UnregisteredParameters {
+    Overrides {
+      Name: "cs:PrimaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:SecondaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:TertiaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:ml"
+      Bool: false
+    }
+  }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
@@ -2406,6 +4239,47 @@ Objects {
   ChildIds: 16813558807825262224
   ChildIds: 10005074784157121906
   ChildIds: 14982843161775482339
+  UnregisteredParameters {
+    Overrides {
+      Name: "cs:PrimaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:SecondaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:TertiaryColor"
+      Color {
+      }
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:PrimaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:SecondaryColor:ml"
+      Bool: false
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:isrep"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:TertiaryColor:ml"
+      Bool: false
+    }
+  }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }

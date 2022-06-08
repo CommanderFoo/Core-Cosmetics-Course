@@ -2,6 +2,14 @@ local COSMETIC_CATEGORIES = require(script:GetCustomProperty("CosmeticCategories
 
 local playerCosmetics = {}
 
+local ColorType = {
+
+	["PRIMARY"] = 1,
+	["SECONDARY"] = 2,
+	["TERTIARY"] = 3
+
+}
+
 local function ClearCosmeticCategory(player, categoryIndex)
 	local category = COSMETIC_CATEGORIES[categoryIndex]
 
@@ -71,6 +79,32 @@ local function ApplyCosmetic(player, categoryIndex, cosmeticIndex)
 	end
 end
 
+local function ApplyColor(player, color, index, categoryIndex, colorType)
+	if playerCosmetics[player][categoryIndex] ~= nil and playerCosmetics[player][categoryIndex] ~= 0 then
+		local cosmeticIndex = playerCosmetics[player][categoryIndex]
+		
+		for index, object in ipairs(player:GetAttachedObjects()) do
+			if object.name == "Cosmetic Item - [Cat: " .. tostring(categoryIndex) .. ", Item: " .. tostring(cosmeticIndex) .. "]" then
+				local prop = "PrimaryColor"
+
+				if colorType == ColorType.SECONDARY then
+					prop = "SecondaryColor"
+				elseif colorType == ColorType.TERTIARY then
+					prop = "TertiaryColor"
+				end
+
+				if color == nil then
+					object:SetCustomProperty(prop, Color.New(0, 0, 0, 0))
+				else
+					object:SetCustomProperty(prop, color)
+				end
+
+				break
+			end
+		end
+	end
+end
+
 local function CategoryIsEnabled(categoryIndex)
 	return not COSMETIC_CATEGORIES[categoryIndex].disabled
 end
@@ -131,6 +165,7 @@ end
 
 Events.ConnectForPlayer("cosmetic.apply", ApplyCosmetic)
 Events.ConnectForPlayer("cosmetic.clear", ClearCosmeticCategory)
+Events.ConnectForPlayer("cosmetic.color", ApplyColor)
 
 Game.playerJoinedEvent:Connect(OnPlayerJoined)
 Game.playerLeftEvent:Connect(OnPlayerLeft)

@@ -1,4 +1,4 @@
-"template[Asset Reference]","palette[Asset Reference]","primary_palette[Asset Reference]","secondary_palette[Asset Reference]","tertiary_palette[Asset Reference]","disabled[Bool]"
-"0AA71CC0B460530D","0BADBADBADBADBAD","0BADBADBADBADBAD","0BADBADBADBADBAD","0BADBADBADBADBAD","False"
-"69226335678ABB65","0BADBADBADBADBAD","0BADBADBADBADBAD","0BADBADBADBADBAD","0BADBADBADBADBAD","False"
-"A0246B49BF3ADE93","0BADBADBADBADBAD","0BADBADBADBADBAD","0BADBADBADBADBAD","0BADBADBADBADBAD","True"
+"template[Asset Reference]","has_primary[Bool]","has_secondary[Bool]","has_tertiary[Bool]","disabled[Bool]"
+"0AA71CC0B460530D","False","False","False","False"
+"69226335678ABB65","False","False","False","False"
+"A0246B49BF3ADE93","False","False","False","True"
