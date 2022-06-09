@@ -1,4 +1,4 @@
 "template[Asset Reference]","has_primary[Bool]","has_secondary[Bool]","has_tertiary[Bool]","disabled[Bool]"
-"0AA71CC0B460530D","False","False","False","False"
-"69226335678ABB65","False","False","False","False"
-"A0246B49BF3ADE93","False","False","False","True"
+"0AA71CC0B460530D","True","True","False","False"
+"69226335678ABB65","True","True","False","False"
+"A0246B49BF3ADE93","True","True","False","False"
