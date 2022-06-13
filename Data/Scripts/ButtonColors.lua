@@ -5,6 +5,7 @@ local TERTIARY_COLOR_PALETTE = require(script:GetCustomProperty("TertiaryColorPa
 local COLOR_BUTTON = script:GetCustomProperty("ColorButton")
 
 local COSMETIC_PANEL = nil
+local COSMETIC_CATEGORIES = nil
 local PRIMARY_COLOR_PANEL = nil
 local SECONDARY_COLOR_PANEL = nil
 local TERTIARY_COLOR_PANEL = nil
@@ -34,7 +35,7 @@ function ButtonColors.Set(opts)
 	PRIMARY_COLOR_PANEL = opts.primary
 	SECONDARY_COLOR_PANEL = opts.secondary
 	TERTIARY_COLOR_PANEL = opts.tertiary
-
+	COSMETIC_CATEGORIES = opts.cosmeticCategories
 	activeCosmetics = opts.activeCosmetics
 	itemsPerRow = opts.itemsPerRow
 end
@@ -73,6 +74,19 @@ function ButtonColors.EnableDisableColors(row)
 	local primaryColors = PRIMARY_COLOR_PANEL:GetChildren()
 	local secondaryColors = SECONDARY_COLOR_PANEL:GetChildren()
 	local tertiaryColors = TERTIARY_COLOR_PANEL:GetChildren()
+	local row = {
+
+		has_primary = false,
+		has_secondary = false,
+		has_tertiary = false
+
+	}
+
+	if COSMETIC_CATEGORIES[activeCategoryIndex] ~= nil and activeCosmetics[activeCategoryIndex] ~= nil and COSMETIC_CATEGORIES[activeCategoryIndex].cosmetics ~= nil then
+		if COSMETIC_CATEGORIES[activeCategoryIndex].cosmetics[activeCosmetics[activeCategoryIndex]] ~= nil then
+			row = COSMETIC_CATEGORIES[activeCategoryIndex].cosmetics[activeCosmetics[activeCategoryIndex]]
+		end
+	end
 
 	if row.has_primary then
 		PRIMARY_COLOR_PANEL.opacity = 1
@@ -117,8 +131,42 @@ function ButtonColors.EnableDisableColors(row)
 	end
 end
 
-function ButtonColors.UpdatePalettes(categoryIndex)
-	activeCategoryIndex = categoryIndex
+function ButtonColors.ResetButtonColors(newCategoryIndex)
+	for catIndex, category in pairs(activePrimaryColorButtons) do
+		if category[PRIMARY_COLOR_PANEL] ~= nil then
+			if catIndex ~= newCategoryIndex then
+				category[PRIMARY_COLOR_PANEL]:SetButtonColor(category[PRIMARY_COLOR_PANEL]:GetDisabledColor())
+			else
+				category[PRIMARY_COLOR_PANEL]:SetButtonColor(category[PRIMARY_COLOR_PANEL]:GetHoveredColor())
+			end
+		end
+	end
+
+	for catIndex, category in pairs(activeSecondaryColorButtons) do
+		if category[SECONDARY_COLOR_PANEL] ~= nil then
+			if catIndex ~= newCategoryIndex then
+				category[SECONDARY_COLOR_PANEL]:SetButtonColor(category[SECONDARY_COLOR_PANEL]:GetDisabledColor())
+			else
+				category[SECONDARY_COLOR_PANEL]:SetButtonColor(category[SECONDARY_COLOR_PANEL]:GetHoveredColor())
+			end
+		end
+	end
+
+	for catIndex, category in pairs(activeTertiaryColorButtons) do
+		if category[TERTIARY_COLOR_PANEL] ~= nil then
+			if catIndex ~= newCategoryIndex then
+				category[TERTIARY_COLOR_PANEL]:SetButtonColor(category[TERTIARY_COLOR_PANEL]:GetDisabledColor())
+			else
+				category[TERTIARY_COLOR_PANEL]:SetButtonColor(category[TERTIARY_COLOR_PANEL]:GetHoveredColor())
+			end
+		end
+	end
+end
+
+function ButtonColors.UpdatePalettes(newCategoryIndex)
+	ButtonColors.ResetButtonColors(newCategoryIndex)
+
+	activeCategoryIndex = newCategoryIndex
 	PRIMARY_COLOR_PANEL.parent.y = COSMETIC_PANEL.y + COSMETIC_PANEL.height + 5
 	SECONDARY_COLOR_PANEL.parent.y = PRIMARY_COLOR_PANEL.parent.y + PRIMARY_COLOR_PANEL.parent.height + 5
 	TERTIARY_COLOR_PANEL.parent.y = SECONDARY_COLOR_PANEL.parent.y + SECONDARY_COLOR_PANEL.parent.height + 5
@@ -172,7 +220,7 @@ function ButtonColors.ApplyColorToCosmetic(color, colorType)
 	end
 end
 
-function ButtonColors.OnColorPressed(button, color, index, panel, colorTable, colorType, activeCategoryIndex)
+function ButtonColors.OnColorPressed(button, color, index, panel, colorTable, colorType)
 	if colorTable[activeCategoryIndex][panel] == nil then
 		colorTable[activeCategoryIndex][panel] = button
 		button:SetButtonColor(button:GetHoveredColor())
@@ -229,7 +277,7 @@ local function SpawnColors(type)
 		local button = World.SpawnAsset(COLOR_BUTTON, { parent = panel })
 
 		button:GetChildren()[1]:SetColor(row.color)
-		button.pressedEvent:Connect(ButtonColors.OnColorPressed, row.color, index, panel, colorTable, type, activeCategoryIndex)
+		button.pressedEvent:Connect(ButtonColors.OnColorPressed, row.color, index, panel, colorTable, type)
 		
 		button.x = xOffset
 		button.y = yOffset

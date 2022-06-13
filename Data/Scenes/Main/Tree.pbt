@@ -378,12 +378,6 @@ Objects {
       }
     }
     Overrides {
-      Name: "cs:ColorButton"
-      AssetReference {
-        Id: 15919376163054027273
-      }
-    }
-    Overrides {
       Name: "cs:PrimaryColorPanel"
       ObjectReference {
         SelfId: 13883287499655531256
@@ -402,43 +396,10 @@ Objects {
       }
     }
     Overrides {
-      Name: "cs:PrimaryColor"
-      Color {
+      Name: "cs:ButtonColors"
+      AssetReference {
+        Id: 5832459305667311962
       }
-    }
-    Overrides {
-      Name: "cs:SecondaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:TertiaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:ml"
-      Bool: false
     }
   }
   Collidable_v2 {
@@ -3919,7 +3880,7 @@ Objects {
     Location {
       X: -54.89888
       Y: -341.212616
-      Z: 0.450767517
+      Z: 6.59111
     }
     Rotation {
       Yaw: -90

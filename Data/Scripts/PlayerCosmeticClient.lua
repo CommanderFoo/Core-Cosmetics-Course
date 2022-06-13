@@ -30,7 +30,8 @@ BUTTON_COLORS.Set({
 	primary = PRIMARY_COLOR_PANEL,
 	secondary = SECONDARY_COLOR_PANEL,
 	tertiary = TERTIARY_COLOR_PANEL,
-	itemsPerRow = totalItemsPerRow
+	itemsPerRow = totalItemsPerRow,
+	cosmeticCategories = COSMETIC_CATEGORIES
 
 })
 
@@ -67,7 +68,7 @@ local function OnClearPressed()
 
 	if activeCosmetics[activeCategoryIndex] ~= nil and activeCosmetics[activeCategoryIndex] ~= 0 then
 		ClearActiveButton(activeCategoryIndex, activeCosmetics[activeCategoryIndex])
-		
+		BUTTON_COLORS.EnableDisableColors()
 		Events.BroadcastToServer("cosmetic.clear", activeCategoryIndex)
 	end
 end
@@ -82,14 +83,13 @@ local function AddActiveButton(button, categoryIndex, cosmeticIndex)
 end
 
 local function OnCosmeticPressed(button, categoryIndex, cosmeticIndex, row)
-	BUTTON_COLORS.EnableDisableColors(row)
-
 	local alreadyActive = ClearActiveButton(categoryIndex, cosmeticIndex)
 
 	if not alreadyActive then
 		AddActiveButton(button, categoryIndex, cosmeticIndex)
 	end
 
+	BUTTON_COLORS.EnableDisableColors()
 	Events.BroadcastToServer("cosmetic.apply", categoryIndex, cosmeticIndex)
 end
 
@@ -142,10 +142,11 @@ local function ShowCategory(category, categoryIndex)
 	activeCategoryIndex = categoryIndex
 	HEADER_TEXT.text = string.upper(category.name .. " Style")
 	LoadCategory(category.cosmetics, categoryIndex)
-	BUTTON_COLORS.UpdatePalettes(activeCategoryIndex)
+	BUTTON_COLORS.UpdatePalettes(categoryIndex)
+	BUTTON_COLORS.EnableDisableColors()
 end
 
-local function OnButtonPressed(button, indicator, category, categoryIndex)
+local function OnCategoryPressed(button, indicator, category, categoryIndex)
 	if button ~= activeButton then
 		if activeButton ~= nil then
 			activeButton:SetButtonColor(button:GetDisabledColor())
@@ -177,18 +178,18 @@ local function CreateCategories()
 			item.y = offset
 			offset = offset + 90
 
-			button.pressedEvent:Connect(OnButtonPressed, indicator, category, index)
+			button.pressedEvent:Connect(OnCategoryPressed, indicator, category, index)
 
 			BUTTON_COLORS.AddCategory(index)
 
 			if activeButton == nil then
-				OnButtonPressed(button, indicator, category, index)
+				OnCategoryPressed(button, indicator, category, index)
 			end
 		end
 	end
 end
 
-local function CreateactiveCosmeticsTable()
+local function CreateActiveCosmeticsTable()
 	if cosmeticPlayerData ~= nil then
 		for categoryIndex, cosmetic in ipairs(cosmeticPlayerData) do
 			activeCosmetics[categoryIndex] = cosmetic
@@ -202,7 +203,7 @@ local function OnPrivateDataChanged(player, key)
 
 		if data ~= nil then
 			cosmeticPlayerData = data
-			CreateactiveCosmeticsTable()
+			CreateActiveCosmeticsTable()
 		end
 	end
 end

@@ -15,7 +15,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 13883287499655531256
+        ParentId: 13786696306280209619
         ChildIds: 7971424405987971086
         Collidable_v2 {
           Value: "mc:ecollisionsetting:inheritfromparent"
@@ -32,6 +32,8 @@ Assets {
         Control {
           Width: 60
           Height: 60
+          UIX: 1355.44592
+          UIY: 361.854
           RenderTransformPivot {
             Anchor {
               Value: "mc:euianchor:middlecenter"
@@ -130,8 +132,8 @@ Assets {
           Value: "mc:eindicatorvisibility:visiblewhenselected"
         }
         Control {
-          Width: -8
-          Height: -8
+          Width: -10
+          Height: -10
           RenderTransformPivot {
             Anchor {
               Value: "mc:euianchor:middlecenter"
@@ -144,8 +146,8 @@ Assets {
             Brush {
             }
             Color {
-              R: 1
-              G: 1
+              R: 0.702222109
+              G: 0.330000103
               B: 1
               A: 1
             }
