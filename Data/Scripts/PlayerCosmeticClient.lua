@@ -1,4 +1,4 @@
-local BUTTON_COLORS = require(script:GetCustomProperty("ButtonColors"))
+local COSMETIC_COLOR = require(script:GetCustomProperty("CosmeticColor"))
 
 local COSMETIC_CATEGORIES = require(script:GetCustomProperty("CosmeticCategories"))
 
@@ -23,7 +23,7 @@ local activeCosmetics = {}
 local categoriesCreated = false
 local totalItemsPerRow = math.floor(COSMETIC_PANEL.parent.width / 65)
 
-BUTTON_COLORS.Set({
+COSMETIC_COLOR.Set({
 
 	activeCosmetics = activeCosmetics,
 	cosmeticPanel = COSMETIC_PANEL,
@@ -64,11 +64,11 @@ local function ClearActiveButton(categoryIndex, cosmeticIndex)
 end
 
 local function OnClearPressed()
-	BUTTON_COLORS.ClearActiveColors(activeCategoryIndex)
+	COSMETIC_COLOR.ClearActiveColors(activeCategoryIndex)
 
 	if activeCosmetics[activeCategoryIndex] ~= nil and activeCosmetics[activeCategoryIndex] ~= 0 then
 		ClearActiveButton(activeCategoryIndex, activeCosmetics[activeCategoryIndex])
-		BUTTON_COLORS.EnableDisableColors()
+		COSMETIC_COLOR.EnableDisableColors()
 		Events.BroadcastToServer("cosmetic.clear", activeCategoryIndex)
 	end
 end
@@ -82,14 +82,14 @@ local function AddActiveButton(button, categoryIndex, cosmeticIndex)
 	button:SetButtonColor(button:GetPressedColor())
 end
 
-local function OnCosmeticPressed(button, categoryIndex, cosmeticIndex, row)
+local function OnCosmeticPressed(button, categoryIndex, cosmeticIndex)
 	local alreadyActive = ClearActiveButton(categoryIndex, cosmeticIndex)
 
 	if not alreadyActive then
 		AddActiveButton(button, categoryIndex, cosmeticIndex)
 	end
 
-	BUTTON_COLORS.EnableDisableColors()
+	COSMETIC_COLOR.EnableDisableColors()
 	Events.BroadcastToServer("cosmetic.apply", categoryIndex, cosmeticIndex)
 end
 
@@ -142,8 +142,18 @@ local function ShowCategory(category, categoryIndex)
 	activeCategoryIndex = categoryIndex
 	HEADER_TEXT.text = string.upper(category.name .. " Style")
 	LoadCategory(category.cosmetics, categoryIndex)
-	BUTTON_COLORS.UpdatePalettes(categoryIndex)
-	BUTTON_COLORS.EnableDisableColors()
+	COSMETIC_COLOR.UpdatePalettes(categoryIndex)
+	COSMETIC_COLOR.EnableDisableColors()
+
+	if activeCosmetics[activeCategoryIndex] ~= nil then
+		local activeCosmeticIndex = activeCosmetics[activeCategoryIndex].cosmetic
+
+		if activeCosmeticIndex ~= nil and activeCosmeticIndex ~= 0 then
+			activeButton = COSMETIC_PANEL:GetChildren()[activeCosmeticIndex + 1]
+
+			AddActiveButton(activeButton, categoryIndex, activeCosmeticIndex)
+		end
+	end
 end
 
 local function OnCategoryPressed(button, indicator, category, categoryIndex)
@@ -180,7 +190,7 @@ local function CreateCategories()
 
 			button.pressedEvent:Connect(OnCategoryPressed, indicator, category, index)
 
-			BUTTON_COLORS.AddCategory(index)
+			COSMETIC_COLOR.AddCategory(index)
 
 			if activeButton == nil then
 				OnCategoryPressed(button, indicator, category, index)
@@ -193,6 +203,11 @@ local function CreateActiveCosmeticsTable()
 	if cosmeticPlayerData ~= nil then
 		for categoryIndex, cosmetic in ipairs(cosmeticPlayerData) do
 			activeCosmetics[categoryIndex] = cosmetic
+
+			--print(cosmetic.primary)
+			-- COSMETIC_COLOR.ApplyColorToCosmetic(cosmetic.primary, COSMETIC_COLOR.ColorType.PRIMARY)
+			-- COSMETIC_COLOR.ApplyColorToCosmetic(cosmetic.secondary, COSMETIC_COLOR.ColorType.SECONDAY)
+			-- COSMETIC_COLOR.ApplyColorToCosmetic(cosmetic.teritary, COSMETIC_COLOR.ColorType.TERTIARY)
 		end
 	end
 end
@@ -208,10 +223,41 @@ local function OnPrivateDataChanged(player, key)
 	end
 end
 
-local function OnUIToggled()
+local function OnUIToggled(isOpened)
 	if not categoriesCreated then
 		CreateCategories()
-		BUTTON_COLORS.CreateColors()
+		COSMETIC_COLOR.CreateColors()
+		categoriesCreated = true
+	end
+
+	if isOpened then
+		COSMETIC_COLOR.EnableDisableColors()
+	end
+end
+
+local function UpdatePlayerCosmetic(obj)
+	if obj ~= nil then
+		local cosmeticObject = obj:GetObject()
+
+		if Object.IsValid(cosmeticObject) then
+			local meshes = cosmeticObject:FindDescendantsByType("StaticMesh")
+	
+			for m, mesh in ipairs(meshes) do
+				if mesh:GetCustomProperty("Ignore") == nil or not mesh:GetCustomProperty("Ignore") then
+					local materialSlots = mesh:GetMaterialSlots()
+
+					for s, slot in ipairs(materialSlots) do
+						if string.find(tostring(slot), "BaseMaterial") then
+							slot:SetSlotColor(cosmeticObject:GetCustomProperty("PrimaryColor"))
+						elseif string.find(tostring(slot), "Detail1") then
+							slot:SetSlotColor(cosmeticObject:GetCustomProperty("SecondaryColor"))
+						elseif string.find(tostring(slot), "Detail2") then
+							slot:SetSlotColor(cosmeticObject:GetCustomProperty("TertiaryColor"))
+						end
+					end
+				end
+			end
+		end
 	end
 end
 
@@ -222,3 +268,4 @@ LOCAL_PLAYER.privateNetworkedDataChangedEvent:Connect(OnPrivateDataChanged)
 CLEAR_BUTTON.pressedEvent:Connect(OnClearPressed)
 
 Events.Connect("CosmeticUIToggle", OnUIToggled)
+Events.Connect("UpdatePlayerCostmetic", UpdatePlayerCosmetic)

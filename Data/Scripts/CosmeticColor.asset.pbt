@@ -1,6 +1,6 @@
 Assets {
   Id: 5832459305667311962
-  Name: "ButtonColors"
+  Name: "CosmeticColor"
   PlatformAssetType: 3
   TextAsset {
     CustomParameters {

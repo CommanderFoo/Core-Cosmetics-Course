@@ -16,21 +16,23 @@ local activePrimaryColorButtons = {}
 local activeSecondaryColorButtons = {}
 local activeTertiaryColorButtons = {}
 
-local ColorType = {
-
-	["PRIMARY"] = 1,
-	["SECONDARY"] = 2,
-	["TERTIARY"] = 3
-
-}
-
 local activeCosmetics = {}
 local itemsPerRow = 0
 local activeCategoryIndex = 1
 
-local ButtonColors = {}
+local CosmeticColor = {
 
-function ButtonColors.Set(opts)
+	ColorType = {
+
+		["PRIMARY"] = 1,
+		["SECONDARY"] = 2,
+		["TERTIARY"] = 3
+	
+	}
+
+}
+
+function CosmeticColor.Set(opts)
 	COSMETIC_PANEL = opts.cosmeticPanel
 	PRIMARY_COLOR_PANEL = opts.primary
 	SECONDARY_COLOR_PANEL = opts.secondary
@@ -40,11 +42,11 @@ function ButtonColors.Set(opts)
 	itemsPerRow = opts.itemsPerRow
 end
 
-function ButtonColors.UpdateCategoryIndex(index)
+function CosmeticColor.UpdateCategoryIndex(index)
 	activeCategoryIndex = index
 end
 
-function ButtonColors.ClearActiveColors(categoryIndex)
+function CosmeticColor.ClearActiveColors(categoryIndex)
 	if activePrimaryColorButtons[categoryIndex] ~= nil and activePrimaryColorButtons[categoryIndex][PRIMARY_COLOR_PANEL] ~= nil then
 		local button = activePrimaryColorButtons[categoryIndex][PRIMARY_COLOR_PANEL]
 
@@ -70,7 +72,7 @@ function ButtonColors.ClearActiveColors(categoryIndex)
 	end
 end
 
-function ButtonColors.EnableDisableColors(row)
+function CosmeticColor.EnableDisableColors()
 	local primaryColors = PRIMARY_COLOR_PANEL:GetChildren()
 	local secondaryColors = SECONDARY_COLOR_PANEL:GetChildren()
 	local tertiaryColors = TERTIARY_COLOR_PANEL:GetChildren()
@@ -131,7 +133,7 @@ function ButtonColors.EnableDisableColors(row)
 	end
 end
 
-function ButtonColors.ResetButtonColors(newCategoryIndex)
+function CosmeticColor.ResetCosmeticColor(newCategoryIndex)
 	for catIndex, category in pairs(activePrimaryColorButtons) do
 		if category[PRIMARY_COLOR_PANEL] ~= nil then
 			if catIndex ~= newCategoryIndex then
@@ -163,8 +165,8 @@ function ButtonColors.ResetButtonColors(newCategoryIndex)
 	end
 end
 
-function ButtonColors.UpdatePalettes(newCategoryIndex)
-	ButtonColors.ResetButtonColors(newCategoryIndex)
+function CosmeticColor.UpdatePalettes(newCategoryIndex)
+	CosmeticColor.ResetCosmeticColor(newCategoryIndex)
 
 	activeCategoryIndex = newCategoryIndex
 	PRIMARY_COLOR_PANEL.parent.y = COSMETIC_PANEL.y + COSMETIC_PANEL.height + 5
@@ -172,13 +174,29 @@ function ButtonColors.UpdatePalettes(newCategoryIndex)
 	TERTIARY_COLOR_PANEL.parent.y = SECONDARY_COLOR_PANEL.parent.y + SECONDARY_COLOR_PANEL.parent.height + 5
 end
 
-function ButtonColors.AddCategory(index)
+function CosmeticColor.AddCategory(index)
 	activePrimaryColorButtons[index] = {}
 	activeSecondaryColorButtons[index] = {}
 	activeTertiaryColorButtons[index] = {}
 end
 
-function ButtonColors.SetSlotColor(slot, color)
+function CosmeticColor.FetchColor(index, colorType)
+	local palette = PRIMARY_COLOR_PALETTE
+
+	if colorType == CosmeticColor.ColorType.SECONDARY then
+		palette = SECONDARY_COLOR_PALETTE
+	elseif colorType == CosmeticColor.ColorType.TERTIARY then
+		palette = TERTIARY_COLOR_PALETTE
+	end
+
+	if palette[index] ~= nil and not palette[index].disabled then
+		return palette[index].color
+	end
+
+	return nil
+end
+
+function CosmeticColor.SetSlotColor(slot, color)
 	if color == nil then
 		slot:ResetColor()
 	else
@@ -186,7 +204,7 @@ function ButtonColors.SetSlotColor(slot, color)
 	end
 end
 
-function ButtonColors.ApplyColorToCosmetic(color, colorType)
+function CosmeticColor.ApplyColorToCosmetic(colorIndex, colorType)
 	if activeCosmetics[activeCategoryIndex] ~= nil and activeCosmetics[activeCategoryIndex] ~= 0 then
 		for index, object in ipairs(LOCAL_PLAYER:GetAttachedObjects()) do
 			if object.name == "Cosmetic Item - [Cat: " .. tostring(activeCategoryIndex) .. ", Item: " .. tostring(activeCosmetics[activeCategoryIndex]) .. "]" then
@@ -198,19 +216,19 @@ function ButtonColors.ApplyColorToCosmetic(color, colorType)
 
 						for s, slot in ipairs(materialSlots) do
 							local condition = (
-								colorType == ColorType.PRIMARY and string.find(tostring(slot), "BaseMaterial")
+								colorType == CosmeticColor.ColorType.PRIMARY and string.find(tostring(slot), "BaseMaterial")
 
 								or
 
-								colorType == ColorType.SECONDARY and string.find(tostring(slot), "Detail1")
+								colorType == CosmeticColor.ColorType.SECONDARY and string.find(tostring(slot), "Detail1")
 
 								or
 
-								colorType == ColorType.TERTIARY and string.find(tostring(slot), "Detail2")
+								colorType == CosmeticColor.ColorType.TERTIARY and string.find(tostring(slot), "Detail2")
 							)
 
 							if condition then
-								ButtonColors.SetSlotColor(slot, color)
+								CosmeticColor.SetSlotColor(slot, CosmeticColor.FetchColor(colorIndex, colorType))
 							end
 						end
 					end
@@ -220,12 +238,12 @@ function ButtonColors.ApplyColorToCosmetic(color, colorType)
 	end
 end
 
-function ButtonColors.OnColorPressed(button, color, index, panel, colorTable, colorType)
+function CosmeticColor.OnColorPressed(button, color, index, panel, colorTable, colorType)
 	if colorTable[activeCategoryIndex][panel] == nil then
 		colorTable[activeCategoryIndex][panel] = button
 		button:SetButtonColor(button:GetHoveredColor())
-		ButtonColors.ApplyColorToCosmetic(color, colorType)
-		Events.BroadcastToServer("cosmetic.color", color, index, activeCategoryIndex, colorType)
+		CosmeticColor.ApplyColorToCosmetic(index, colorType)
+		Events.BroadcastToServer("cosmetic.color", index, activeCategoryIndex, colorType)
 		return
 	end
 
@@ -248,7 +266,7 @@ function ButtonColors.OnColorPressed(button, color, index, panel, colorTable, co
 		color = nil
 	end
 
-	ButtonColors.ApplyColorToCosmetic(color, colorType)
+	CosmeticColor.ApplyColorToCosmetic(index, colorType)
 	Events.BroadcastToServer("cosmetic.color", color, index, activeCategoryIndex, colorType)
 end
 
@@ -261,12 +279,12 @@ local function SpawnColors(type)
 	local panel = PRIMARY_COLOR_PANEL
 	local colorTable = activePrimaryColorButtons
 
-	if type == ColorType.SECONDARY then
+	if type == CosmeticColor.ColorType.SECONDARY then
 		previous = PRIMARY_COLOR_PANEL.parent
 		palette = SECONDARY_COLOR_PALETTE
 		panel = SECONDARY_COLOR_PANEL
 		colorTable = activeSecondaryColorButtons
-	elseif type == ColorType.TERTIARY then
+	elseif type == CosmeticColor.ColorType.TERTIARY then
 		previous = SECONDARY_COLOR_PANEL.parent
 		palette = TERTIARY_COLOR_PALETTE
 		panel = TERTIARY_COLOR_PANEL
@@ -277,7 +295,7 @@ local function SpawnColors(type)
 		local button = World.SpawnAsset(COLOR_BUTTON, { parent = panel })
 
 		button:GetChildren()[1]:SetColor(row.color)
-		button.pressedEvent:Connect(ButtonColors.OnColorPressed, row.color, index, panel, colorTable, type)
+		button.pressedEvent:Connect(CosmeticColor.OnColorPressed, row.color, index, panel, colorTable, type)
 		
 		button.x = xOffset
 		button.y = yOffset
@@ -295,10 +313,10 @@ local function SpawnColors(type)
 	panel.parent.y = previous.y + previous.height + 5
 end
 
-function ButtonColors.CreateColors()
-	SpawnColors(ColorType.PRIMARY)
-	SpawnColors(ColorType.SECONDARY)
-	SpawnColors(ColorType.TERTIARY)
+function CosmeticColor.CreateColors()
+	SpawnColors(CosmeticColor.ColorType.PRIMARY)
+	SpawnColors(CosmeticColor.ColorType.SECONDARY)
+	SpawnColors(CosmeticColor.ColorType.TERTIARY)
 end
 
-return ButtonColors
+return CosmeticColor

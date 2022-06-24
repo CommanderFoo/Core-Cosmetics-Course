@@ -53,45 +53,6 @@ Objects {
   ChildIds: 16334913400939205878
   ChildIds: 1302914409489710458
   UnregisteredParameters {
-    Overrides {
-      Name: "cs:PrimaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:SecondaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:TertiaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:ml"
-      Bool: false
-    }
   }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -132,6 +93,24 @@ Objects {
       Name: "cs:CosmeticCategories"
       AssetReference {
         Id: 14402021475516488994
+      }
+    }
+    Overrides {
+      Name: "cs:PrimaryColorPalette"
+      AssetReference {
+        Id: 10603777918199937337
+      }
+    }
+    Overrides {
+      Name: "cs:SecondaryColorPalette"
+      AssetReference {
+        Id: 6835082458021292162
+      }
+    }
+    Overrides {
+      Name: "cs:TertiaryColorPalette"
+      AssetReference {
+        Id: 11975458049345002470
       }
     }
   }
@@ -231,45 +210,6 @@ Objects {
   ChildIds: 11695674039229126980
   ChildIds: 11848345389611055370
   UnregisteredParameters {
-    Overrides {
-      Name: "cs:PrimaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:SecondaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:TertiaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:ml"
-      Bool: false
-    }
   }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:forceoff"
@@ -396,7 +336,7 @@ Objects {
       }
     }
     Overrides {
-      Name: "cs:ButtonColors"
+      Name: "cs:CosmeticColor"
       AssetReference {
         Id: 5832459305667311962
       }
@@ -444,45 +384,6 @@ Objects {
       ObjectReference {
         SelfId: 17621579706923635295
       }
-    }
-    Overrides {
-      Name: "cs:PrimaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:SecondaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:TertiaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:ml"
-      Bool: false
     }
   }
   Collidable_v2 {
@@ -544,45 +445,6 @@ Objects {
       Name: "cs:Event"
       String: "CosmeticUIToggle"
     }
-    Overrides {
-      Name: "cs:PrimaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:SecondaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:TertiaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:ml"
-      Bool: false
-    }
   }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -626,45 +488,6 @@ Objects {
   ChildIds: 14153385274223620359
   ChildIds: 6391176233666916187
   UnregisteredParameters {
-    Overrides {
-      Name: "cs:PrimaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:SecondaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:TertiaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:ml"
-      Bool: false
-    }
   }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -704,45 +527,6 @@ Objects {
   }
   ParentId: 18273135735424674543
   UnregisteredParameters {
-    Overrides {
-      Name: "cs:PrimaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:SecondaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:TertiaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:ml"
-      Bool: false
-    }
   }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -819,45 +603,6 @@ Objects {
   }
   ParentId: 18273135735424674543
   UnregisteredParameters {
-    Overrides {
-      Name: "cs:PrimaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:SecondaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:TertiaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:ml"
-      Bool: false
-    }
   }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -902,45 +647,6 @@ Objects {
   ChildIds: 13786696306280209619
   ChildIds: 17621579706923635295
   UnregisteredParameters {
-    Overrides {
-      Name: "cs:PrimaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:SecondaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:TertiaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:ml"
-      Bool: false
-    }
   }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:forceoff"
@@ -988,45 +694,6 @@ Objects {
   }
   ParentId: 606497376423954391
   UnregisteredParameters {
-    Overrides {
-      Name: "cs:PrimaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:SecondaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:TertiaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:ml"
-      Bool: false
-    }
   }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -1083,45 +750,6 @@ Objects {
   ChildIds: 1295520017669104817
   ChildIds: 6871725160970785464
   UnregisteredParameters {
-    Overrides {
-      Name: "cs:PrimaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:SecondaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:TertiaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:ml"
-      Bool: false
-    }
   }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -1189,45 +817,6 @@ Objects {
   ChildIds: 1221452744652631757
   ChildIds: 15006423300819658242
   UnregisteredParameters {
-    Overrides {
-      Name: "cs:PrimaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:SecondaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:TertiaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:ml"
-      Bool: false
-    }
   }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -1288,45 +877,6 @@ Objects {
   ChildIds: 1975337875352305462
   ChildIds: 2974758029415688366
   UnregisteredParameters {
-    Overrides {
-      Name: "cs:PrimaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:SecondaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:TertiaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:ml"
-      Bool: false
-    }
   }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -1385,45 +935,6 @@ Objects {
   ChildIds: 15571594610341332432
   ChildIds: 3254732929557938203
   UnregisteredParameters {
-    Overrides {
-      Name: "cs:PrimaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:SecondaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:TertiaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:ml"
-      Bool: false
-    }
   }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -1480,45 +991,6 @@ Objects {
   }
   ParentId: 2974758029415688366
   UnregisteredParameters {
-    Overrides {
-      Name: "cs:PrimaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:SecondaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:TertiaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:ml"
-      Bool: false
-    }
   }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -1576,45 +1048,6 @@ Objects {
   ParentId: 2974758029415688366
   ChildIds: 5412481614257308230
   UnregisteredParameters {
-    Overrides {
-      Name: "cs:PrimaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:SecondaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:TertiaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:ml"
-      Bool: false
-    }
   }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -1765,45 +1198,6 @@ Objects {
   ChildIds: 18430864154933140547
   ChildIds: 1136519510714057913
   UnregisteredParameters {
-    Overrides {
-      Name: "cs:PrimaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:SecondaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:TertiaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:ml"
-      Bool: false
-    }
   }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -2063,45 +1457,6 @@ Objects {
   ChildIds: 3661016039716320152
   ChildIds: 13883287499655531256
   UnregisteredParameters {
-    Overrides {
-      Name: "cs:PrimaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:SecondaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:TertiaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:ml"
-      Bool: false
-    }
   }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -2766,45 +2121,6 @@ Objects {
   ChildIds: 1937862282172558536
   ChildIds: 5519407647640931458
   UnregisteredParameters {
-    Overrides {
-      Name: "cs:PrimaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:SecondaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:TertiaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:ml"
-      Bool: false
-    }
   }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -3069,45 +2385,6 @@ Objects {
   ChildIds: 957351107598403999
   ChildIds: 8670428864554188555
   UnregisteredParameters {
-    Overrides {
-      Name: "cs:PrimaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:SecondaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:TertiaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:ml"
-      Bool: false
-    }
   }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -3720,45 +2997,6 @@ Objects {
   ChildIds: 10307131907842176461
   ChildIds: 10081144701168070004
   UnregisteredParameters {
-    Overrides {
-      Name: "cs:PrimaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:SecondaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:TertiaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:ml"
-      Bool: false
-    }
   }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -4201,45 +3439,6 @@ Objects {
   ChildIds: 10005074784157121906
   ChildIds: 14982843161775482339
   UnregisteredParameters {
-    Overrides {
-      Name: "cs:PrimaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:SecondaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:TertiaryColor"
-      Color {
-      }
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:PrimaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:SecondaryColor:ml"
-      Bool: false
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:isrep"
-      Bool: true
-    }
-    Overrides {
-      Name: "cs:TertiaryColor:ml"
-      Bool: false
-    }
   }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"

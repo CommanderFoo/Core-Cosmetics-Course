@@ -12,18 +12,10 @@ Entries {
           Table {
             Entries {
               Key {
-                StringVar: "tertiary"
+                StringVar: "secondary"
               }
               SimpleValue {
-                IntVar: 0
-              }
-            }
-            Entries {
-              Key {
-                StringVar: "primary"
-              }
-              SimpleValue {
-                IntVar: 3
+                IntVar: 2
               }
             }
             Entries {
@@ -36,10 +28,18 @@ Entries {
             }
             Entries {
               Key {
-                StringVar: "secondary"
+                StringVar: "primary"
               }
               SimpleValue {
-                IntVar: 2
+                IntVar: 6
+              }
+            }
+            Entries {
+              Key {
+                StringVar: "tertiary"
+              }
+              SimpleValue {
+                IntVar: 0
               }
             }
           }

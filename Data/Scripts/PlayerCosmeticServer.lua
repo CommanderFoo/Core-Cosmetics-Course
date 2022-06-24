@@ -1,5 +1,9 @@
 local COSMETIC_CATEGORIES = require(script:GetCustomProperty("CosmeticCategories"))
 
+local PRIMARY_COLOR_PALETTE = require(script:GetCustomProperty("PrimaryColorPalette"))
+local SECONDARY_COLOR_PALETTE = require(script:GetCustomProperty("SecondaryColorPalette"))
+local TERTIARY_COLOR_PALETTE = require(script:GetCustomProperty("TertiaryColorPalette"))
+
 local playerCosmetics = {}
 
 local ColorType = {
@@ -22,18 +26,22 @@ local function ClearCosmeticCategory(player, categoryIndex)
 			end
 		end
 
-		playerCosmetics[player][categoryIndex] = 0
+		playerCosmetics[player][categoryIndex] = {}
 	end
 end
 
 local function CosmeticIsAttached(player, categoryIndex, cosmeticIndex)
-	return playerCosmetics[player][categoryIndex] == cosmeticIndex
+	if playerCosmetics[player][categoryIndex] ~= nil and playerCosmetics[player][categoryIndex].cosmetic == cosmeticIndex then
+		return true
+	end
+	
+	return false
 end
 
 local function ClearCosmetic(player, categoryIndex, cosmeticIndex)
-	local cosmetics = playerCosmetics[player][categoryIndex]
+	local cosmetic = playerCosmetics[player][categoryIndex]
 	
-	if cosmetics ~= nil then
+	if cosmetic ~= nil then
 		local attachedObjects = player:GetAttachedObjects()
 		local category = COSMETIC_CATEGORIES[categoryIndex]
 		local cosmetic = category.cosmetics[cosmeticIndex]
@@ -48,7 +56,7 @@ local function ClearCosmetic(player, categoryIndex, cosmeticIndex)
 			end
 		end
 
-		playerCosmetics[player][categoryIndex] = 0
+		playerCosmetics[player][categoryIndex] = {}
 	end
 end
 
@@ -73,31 +81,62 @@ local function ApplyCosmetic(player, categoryIndex, cosmeticIndex)
 
 				cosmetic.name = "Cosmetic Item - [Cat: " .. tostring(categoryIndex) .. ", Item: " .. tostring(cosmeticIndex) .. "]"
 				cosmetic:AttachToPlayer(player, category.socket)
-				playerCosmetics[player][categoryIndex] = cosmeticIndex
+				playerCosmetics[player][categoryIndex].cosmetic = cosmeticIndex
 			end
 		end
 	end
 end
 
-local function ApplyColor(player, color, index, categoryIndex, colorType)
-	if playerCosmetics[player][categoryIndex] ~= nil and playerCosmetics[player][categoryIndex] ~= 0 then
-		local cosmeticIndex = playerCosmetics[player][categoryIndex]
-		
+local function FetchColor(index, colorType)
+	local palette = PRIMARY_COLOR_PALETTE
+
+	if colorType == ColorType.SECONDARY then
+		palette = SECONDARY_COLOR_PALETTE
+	elseif colorType == ColorType.TERTIARY then
+		palette = TERTIARY_COLOR_PALETTE
+	end
+
+	if palette[index] ~= nil and not palette[index].disabled then
+		return palette[index].color
+	end
+
+	return nil
+end
+
+local function UpdateColorProps(object, colorIndex, colorType)
+	local color = FetchColor(colorIndex, colorType)
+	local prop = "PrimaryColor"
+
+	if colorType == ColorType.SECONDARY then
+		prop = "SecondaryColor"
+	elseif colorType == ColorType.TERTIARY then
+		prop = "TertiaryColor"
+	end
+
+	if color == nil then
+		object:SetCustomProperty(prop, Color.New(0, 0, 0, 0))
+	else
+		object:SetCustomProperty(prop, color)
+	end
+end
+
+local function ApplyColor(player, colorIndex, categoryIndex, colorType)
+	local item = playerCosmetics[player][categoryIndex]
+
+	if item and item.cosmetic ~= nil and item.cosmetic ~= 0 then
+		local cosmeticIndex = item.cosmetic
+
+		if colorType == ColorType.PRIMARY then
+			item.primary = colorIndex
+		elseif colorType == ColorType.SECONDARY then
+			item.secondary = colorIndex
+		elseif colorType == ColorType.TERTIARY then
+			item.tertiary = colorIndex
+		end
+
 		for index, object in ipairs(player:GetAttachedObjects()) do
 			if object.name == "Cosmetic Item - [Cat: " .. tostring(categoryIndex) .. ", Item: " .. tostring(cosmeticIndex) .. "]" then
-				local prop = "PrimaryColor"
-
-				if colorType == ColorType.SECONDARY then
-					prop = "SecondaryColor"
-				elseif colorType == ColorType.TERTIARY then
-					prop = "TertiaryColor"
-				end
-
-				if color == nil then
-					object:SetCustomProperty(prop, Color.New(0, 0, 0, 0))
-				else
-					object:SetCustomProperty(prop, color)
-				end
+				UpdateColorProps(object, colorIndex, colorType)
 
 				break
 			end
@@ -119,16 +158,20 @@ end
 
 local function EquipPlayerCosmetics(player)
 	for categoryIndex, category in ipairs(COSMETIC_CATEGORIES) do
-		local playerCosmetic = playerCosmetics[player][categoryIndex]
+		local cosmeticItem = playerCosmetics[player][categoryIndex]
 
-		if playerCosmetic ~= 0 then
-			local cosmetic = category.cosmetics[playerCosmetic]
+		if cosmeticItem ~= nil and cosmeticItem.cosmetic ~= 0 then
+			local cosmetic = category.cosmetics[cosmeticItem.cosmetic]
 
 			if cosmetic ~= nil then
 				local cosmetic = World.SpawnAsset(cosmetic.template, { networkContext = NetworkContextType.NETWORKED })
 
-				cosmetic.name = "Cosmetic Item - [Cat: " .. tostring(categoryIndex) .. ", Item: " .. tostring(playerCosmetic) .. "]"
+				cosmetic.name = "Cosmetic Item - [Cat: " .. tostring(categoryIndex) .. ", Item: " .. tostring(cosmeticItem.cosmetic) .. "]"
 				cosmetic:AttachToPlayer(player, category.socket)
+
+				UpdateColorProps(cosmetic, cosmeticItem.primary, ColorType.PRIMARY)
+				UpdateColorProps(cosmetic, cosmeticItem.secondary, ColorType.SECONDARY)
+				UpdateColorProps(cosmetic, cosmeticItem.tertiary, ColorType.TERTIARY)
 			end
 		end
 	end
@@ -137,16 +180,18 @@ end
 local function OnPlayerJoined(player)
 	playerCosmetics[player] = {}
 
-	for index, row in ipairs(COSMETIC_CATEGORIES) do
-		playerCosmetics[player][index] = 0
-	end
-
 	local data = Storage.GetPlayerData(player)
 
 	if data.cosmetics ~= nil then
-		for cateogryIndex, cosmetic in ipairs(data.cosmetics) do
-			if CategoryIsEnabled(cateogryIndex) and CosmeticIsEnabled(cateogryIndex, cosmetic) then
-				playerCosmetics[player][cateogryIndex] = cosmetic
+		for categoryIndex, entry in ipairs(data.cosmetics) do
+			if CategoryIsEnabled(categoryIndex) and CosmeticIsEnabled(categoryIndex, entry.cosmetic) then
+				playerCosmetics[player][categoryIndex] = { cosmetic = entry.cosmetic }
+			end
+
+			if playerCosmetics[player][categoryIndex] ~= nil then
+				playerCosmetics[player][categoryIndex].primary = entry.primary or 0
+				playerCosmetics[player][categoryIndex].secondary = entry.secondary or 0
+				playerCosmetics[player][categoryIndex].tertiary = entry.tertiary or 0
 			end
 		end
 
